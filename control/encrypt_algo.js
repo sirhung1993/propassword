@@ -13,8 +13,8 @@ exports.encryptPassword = function(blockID, keyword) {
   }
   maxLoop = maxLoop % md5length
   var encryptedPassword = ''
-  for (var k = 0; k < maxLoop; k++) {
-    for (var ele in keyword) {
+  for (var ele in keyword) {
+      for (var k = 0; k < maxLoop; k++) {
       encryptedPassword += keyword[ele]
     }
     encryptedPassword = md5(encryptedPassword)

@@ -70,3 +70,19 @@ function letEncryptPassword(eve) {
     generatePassword()
   }
 }
+
+function submitNewBlock() {
+
+}
+
+function addOneHint(eve) {
+
+}
+
+function addANewHint() {
+
+}
+
+function removeAHint() {
+
+}

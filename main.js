@@ -7,24 +7,13 @@ const form = require('multer')()
 const app = express()
 
 const PassGen = require('./model/passgenerator.js')
+const BlockChain = require('./model/BlockChain.js')
 
 const Config = require('./config/Config.js')
 const config = new Config()
 
 app.use(helmet())
 // app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
-app.set('trust proxy', 1)
-app.use(session({
-  secret: config.sessionSecret,
-  resave: false,
-  saveUninitialized: true,
-  proxy: true,
-  cookie: {
-    secure: true,
-    maxAge: 3600000,
-    httpOnly: false
-   }
-}))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,9 +23,14 @@ app.use('/layout', express.static('./views/layout'))
 app.use('/views', express.static('./views'))
 app.set('port', (process.env.PORT || 5000))
 app.use('/passgen', PassGen)
+app.use('/blockchain', BlockChain)
 
 app.get('/', function (req, res, next) {
   res.render('pages/index')
+})
+
+app.get('/newblock', function (req, res, next) {
+  res.render('pages/createnewblock')
 })
 
 app.get('(error_page|*)' , function ( req , res , next) {

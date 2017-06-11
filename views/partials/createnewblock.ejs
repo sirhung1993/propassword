@@ -1,0 +1,36 @@
+<div class="w3-row-padding" id="block">
+  <div class="w3-col" style="width:30%"><p> </p></div>
+  <div class="w3-col" style="width:40%">
+    <p class="w3-center w3-xlarge">CREATE NEW BLOCK</p>
+    <input class="w3-input w3-border" name="blockName"  placeholder="Set the name for your block. For example: My Family" title="This is the name for your block of hints or questions which can help you easy to get the keywords">
+  </div>
+  <div class="w3-col" style="width:30%">
+    <br />
+    <br />
+    <br />
+    <br />
+    <button class="w3-button w3-yellow w3-hover-blue w3-round-xlarge w3-border-black w3-large" onclick='window.location.href = "/"' > BACK TO PASSWORD GENERATOR </button>
+  </div>
+</div>
+
+<div id="hintSector">
+  <div class="w3-row">
+    <p class="w3-xlarge w3-left-align">Hint 1: </p>
+
+    <div class="w3-twothird">
+        <input class="w3-input w3-border" name="hint" placeholder="A question or a hint to get the correct keyword in correct order. For example: What is your girlfriend name?" type="text" onkeypress="return addOneHint(event)"/>
+    </div>
+    <div class="w3-third">
+        <img src="views/images/addnewkey.png" alt="add a new hint" style="width:50px;height:50px;" class="w3-hover-opacity" onclick="addANewHint()" title="Add one more question or a hint">
+        <img src="views/images/removeakey.png" alt="remove a hint" style="width:50px;height:50px;" class="w3-hover-opacity" onclick="removeAHint()" title="remove a question or a hint">
+    </div>
+  </div>
+</div>
+
+<div class="w3-display-container" style="height:100px;">
+  <button class="w3-button w3-white w3-hover-grey w3-round-xxlarge w3-border-black w3-xlarge w3-display-middle" onclick="submitNewBlock()"> SUBMIT YOUR NEW BLOCK </button>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>

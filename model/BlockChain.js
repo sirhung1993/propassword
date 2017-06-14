@@ -1,18 +1,40 @@
 const express = require('express')
-const redis = require('../control/redis.js')
+const Redis = require('../control/redis.js')
+
+const redis = new Redis()
 const router = express.Router()
 
 router.post('/', (req, res, next) => {
-  console.log(req.body)
-  // var keyword = req.body['keyword[]']
-  // var blockid = req.body.blockname
-  // var encryptedPassword
-  // try {
-  //   encryptedPassword = encryptAlgo.encryptPassword(blockid, keyword)
-  // } catch(err) {
-  //   res.status(200).json({err: {msg: err}})
-  // }
-  // res.status(200).json({OK: {msg: encryptedPassword}})
+  var blockname = req.body.blockname
+  var hintsBlock = req.body['hint[]']
+
+  redis.createNewBlock(blockname, hintsBlock)
+    .then((reply) => {
+      res.status(200).json({OK: {msg: 'Create new block susscessfully! ' + reply}})
+    }).catch((err) => {
+      res.status(200).json({err: {msg: 'Cannot create new block due to:  ' + err}})
+    })
 })
+
+router.get('/getAllBlockNames', (req, res, next) => {
+  redis.getAllBlockNames()
+    .then((blocknames) => {
+      res.status(200).json({OK: {msg: blocknames}})
+    }).catch((err) => {
+      res.status(200).json({err: {msg: 'Cannot get all blocks due to:  ' + err}})
+    })
+})
+
+router.post('/getHintsOfABlock', (req, res, next) => {
+  var blockname = req.body.blockname
+  console.log(blockname)
+  redis.getHintsOfABlock(blockname)
+    .then((hints) => {
+      res.status(200).json({OK: {msg: hints}})
+    }).catch((err) => {
+      res.status(200).json({err: {msg: 'Cannot get hints from block '+ blockname + ' due to:  ' + err}})
+    })
+})
+
 
 module.exports = router

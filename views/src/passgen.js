@@ -51,7 +51,7 @@ function generatePassword() {
   $("input[name='keyword']").each(function() {
       keyword.push($(this).val())
   })
-  console.log(keyword)
+
   $.post('passgen', {
     blockname: blockname,
     keyword: keyword
@@ -72,7 +72,22 @@ function letEncryptPassword(eve) {
 }
 
 function submitNewBlock() {
+  var blockname = $("input[name='newBlockName']").val()
+  var hint = []
+  $("input[name='hint']").each(function() {
+      hint.push($(this).val())
+  })
 
+  $.post('blockchain', {
+    blockname: blockname,
+    hint: hint
+  }, (data, status) => {
+    if(data.OK) {
+      console.log('OK')
+    } else {
+      console.log(data.err.msg)
+    }
+  })
 }
 
 function addOneHint(eve) {
@@ -80,9 +95,19 @@ function addOneHint(eve) {
 }
 
 function addANewHint() {
-
+  var hintSector = document.getElementById("hintSector")
+  var countKey = hintSector.childElementCount
+  var currentKey = hintSector.firstElementChild.cloneNode(true)
+  currentKey.children[0].innerHTML ='Hint ' + parseInt(countKey + 1 + ':')
+  currentKey.children[1].children[0].value = ''
+  hintSector.appendChild(currentKey)
 }
 
 function removeAHint() {
-
+  var hintSector = document.getElementById("hintSector")
+  var countKey = hintSector.childElementCount
+  var currentKey = hintSector.lastElementChild
+  if (countKey > 1) {
+    hintSector.removeChild(currentKey)
+  }
 }

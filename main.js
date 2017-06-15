@@ -13,16 +13,16 @@ const Config = require('./config/Config.js')
 const config = new Config()
 
 app.use(helmet())
-// app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
-// app.use('*',(req, res, next) => {
-// 	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
-// 		next()
-// 	} else{
-// 		console.log("https://" + req.hostname)
-// 		res.redirect("https://" + req.hostname)
-// 	}
-// })
+app.get('/',(req, res, next) => {
+	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
+		next()
+	} else{
+		// console.log("https://" + req.hostname)
+		res.redirect('https://ezkeytopass.herokuapp.com')
+	}
+})
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))

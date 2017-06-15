@@ -17,10 +17,9 @@ app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 app.get('/',(req, res, next) => {
 	console.log(req.headers["x-forwarded-proto"])
-	if (process.env.OPERATION_MODE === 'DEV') {
+	if (req.headers["x-forwarded-proto"] === 'https' || process.env.OPERATION_MODE === 'DEV') {
 		next()
 	} else{
-		console.log(req.secure)
 		res.redirect('https://ezkeytopass.herokuapp.com')
 		// next()
 	}

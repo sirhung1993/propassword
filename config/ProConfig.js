@@ -2,8 +2,8 @@
 const md5 = require('md5')
 
 module.exports = {
-  passwordKey: 'ezkeytopass_BUIVIETHUNG_MIT_LIC',
-  sessionSecret: md5(md5('Is md5 is enough?') + 'a website made by Bui Viet Hung'),
+  passwordKey: process.env.SECRET_KEY_1,
+  sessionSecret: md5(md5(process.env.SECRET_KEY_2) + process.env.SECRET_KEY_3),
   encryptingSeed: function (userPassword) {
     return md5(md5(userPassword + this.passwordKey))
   },

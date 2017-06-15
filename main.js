@@ -15,6 +15,14 @@ const config = new Config()
 app.use(helmet())
 // app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
+app.use((res, req, next) => {
+	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
+		next()
+	} else{
+		res.redirect("https://" + req.headers.host + req.url)
+	}
+})
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs')

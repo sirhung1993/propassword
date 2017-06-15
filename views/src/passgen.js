@@ -65,7 +65,6 @@ function generatePassword() {
 }
 
 function letEncryptPassword(eve) {
-  console.log(eve.keyCode)
   if (eve.keyCode === 13) {
     generatePassword()
   }
@@ -111,3 +110,90 @@ function removeAHint() {
     hintSector.removeChild(currentKey)
   }
 }
+
+// Dropdown
+function dropFunction(cb) {
+    var x = document.getElementById("blockFilter");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+    if(typeof cb === "function") {
+      cb()
+    }    
+}
+
+// Filter
+function filterFunction(cb) {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("blockname");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("blockFilter");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+    if(typeof cb === "function") {
+      cb()
+    }
+}
+
+function emptyASector(id) {
+  var sector = document.getElementById(id)
+  var elementCount = sector.childElementCount
+  console.log(elementCount)
+  for (var i = elementCount - 1; i > 0; i--) {
+    sector.removeChild(sector.childNodes[i])
+  }
+}
+
+function selectABlockname(currentElement) {
+  dropFunction()
+  emptyASector('keySector')
+  var choosenBlock = currentElement.innerHTML
+  $("#blockname").val(choosenBlock)
+  $.post('blockchain/getHintsOfABlock', 
+  {
+    blockname: choosenBlock
+  }, (data, status) => {
+    if(data.OK) {
+      var hints = data.OK.msg
+      var keySector = document.getElementById('keySector')
+      var firstHintDiv = keySector.firstElementChild
+
+      var firstHint = firstHintDiv.firstElementChild
+      firstHint.innerHTML = 
+      (choosenBlock !== 'defaultblock') ? hints[0] : 'Keyword 1'
+      for(var i = 1; i < hints.length; i++) {
+        var clone = firstHintDiv.cloneNode(true)
+        clone.firstElementChild.innerHTML = (hints[i]) ? hints[i] : 'Keyword ' + (++i)
+        keySector.appendChild(clone)
+      }
+    } else {
+      console.log('Cannot get data from servers! Please check your internet connection!')
+    }
+  })
+}
+
+$(document).ready(() => {
+  $.get('blockchain/getAllBlockNames', (data, status) => {
+    if(data.OK) {
+      var allBlockNames = data.OK.msg
+
+      var blockFilter = document.getElementById('blockFilter')
+      var firstBlockName = blockFilter.firstElementChild
+      for (var i in allBlockNames) {
+        var clone = firstBlockName.cloneNode(false)
+        clone.innerHTML = allBlockNames[i]
+        blockFilter.appendChild(clone)
+      }
+    } else {
+      console.log('Cannot get data from servers! Please check your internet connection!')
+    }
+  })
+})

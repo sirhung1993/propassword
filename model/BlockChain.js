@@ -27,7 +27,6 @@ router.get('/getAllBlockNames', (req, res, next) => {
 
 router.post('/getHintsOfABlock', (req, res, next) => {
   var blockname = req.body.blockname
-  console.log(blockname)
   redis.getHintsOfABlock(blockname)
     .then((hints) => {
       res.status(200).json({OK: {msg: hints}})

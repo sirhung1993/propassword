@@ -17,10 +17,12 @@ app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 app.get('/',(req, res, next) => {
 	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
+		console.log(req.secure)
 		next()
 	} else{
 		// console.log("https://" + req.hostname)
 		res.redirect('https://ezkeytopass.herokuapp.com')
+		// next()
 	}
 })
 

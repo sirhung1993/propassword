@@ -15,11 +15,12 @@ const config = new Config()
 app.use(helmet())
 // app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
-app.use((req, res, next) => {
+app.use('*',(req, res, next) => {
 	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
 		next()
 	} else{
-		res.redirect("https://" + req.headers["host"] + req.url)
+		console.log("https://" + req.hostname)
+		res.redirect("https://" + req.hostname)
 	}
 })
 
@@ -34,6 +35,7 @@ app.use('/passgen', PassGen)
 app.use('/blockchain', BlockChain)
 
 app.get('/', function (req, res, next) {
+  // console.log("https://" + req.hostname + req.url)
   res.render('pages/index')
 })
 
@@ -46,5 +48,5 @@ app.get('(error_page|*)' , function ( req , res , next) {
 })
 
 app.listen(app.get('port'), () => {
-  console.log('Server is running at : ' + app.get('port'))
+  console.log('Server is running at this : ' + app.get('port'))
 })

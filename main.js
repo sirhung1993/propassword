@@ -20,8 +20,8 @@ app.get('/',(req, res, next) => {
 		console.log(req.secure)
 		next()
 	} else{
-		// console.log("https://" + req.hostname)
-		res.redirect('https://ezkeytopass.herokuapp.com')
+		console.log(req.secure)
+		res.redirect('https://google.com.vn')
 		// next()
 	}
 })

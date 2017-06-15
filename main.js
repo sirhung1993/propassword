@@ -15,11 +15,11 @@ const config = new Config()
 app.use(helmet())
 // app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
-app.use((res, req, next) => {
+app.use((req, res, next) => {
 	if (req.secure || process.env.OPERATION_MODE === 'DEV') {
 		next()
 	} else{
-		res.redirect("https://" + req.headers.host + req.url)
+		res.redirect("https://" + req.headers["host"] + req.url)
 	}
 })
 

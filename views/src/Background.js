@@ -1,4 +1,4 @@
-
+var AllBlock;
 
 function CreateCollunm(XLeft)
 {

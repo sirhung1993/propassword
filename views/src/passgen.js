@@ -179,21 +179,3 @@ function selectABlockname(currentElement) {
     }
   })
 }
-
-$(document).ready(() => {
-  $.get('blockchain/getAllBlockNames', (data, status) => {
-    if(data.OK) {
-      var allBlockNames = data.OK.msg
-
-      var blockFilter = document.getElementById('blockFilter')
-      var firstBlockName = blockFilter.firstElementChild
-      for (var i in allBlockNames) {
-        var clone = firstBlockName.cloneNode(false)
-        clone.innerHTML = allBlockNames[i]
-        blockFilter.appendChild(clone)
-      }
-    } else {
-      console.log('Cannot get data from servers! Please check your internet connection!')
-    }
-  })
-})

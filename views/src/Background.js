@@ -33,42 +33,91 @@ function ShowDeleteButton()
 
 
 $( window ).resize(function() {
-    
     $("#BackGround").empty()
-    var i = 0 ;
-    var Xleft = -1;
-    var MaxWidth = $(window).width()
-    while( Xleft < MaxWidth + 5){
-        Xleft = CreateCollunm(Xleft);
-    }
-    
-    var BlockWidth = $("#BlockContain").width();
-    var AddButtonWidth = $("#AddButton").width();
-    var BlockRealWidth = BlockWidth - 2*AddButtonWidth
-    $("#BlockName").width(BlockRealWidth + "px")
-    var BackGround = document.getElementById("BackGround").childNodes
-    BackGround[0].innerHTML.split("<br>").length
-    var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
-    var NumOfCol;
+    Initialize();
 });
 
-$(document).ready(function(){
+function Initialize(){
     var i = 0 ;
     var Xleft = -1;
-    var MaxWidth = $(window).width()
-    while( Xleft < MaxWidth + 5){
+    var MaxWidth = $(window).width();
+    while( Xleft < MaxWidth + 5){
         Xleft = CreateCollunm(Xleft);
     }
-    
     var BlockWidth = $("#BlockContain").width();
     var AddButtonWidth = $("#AddButton").width();
     var BlockRealWidth = BlockWidth - 2*AddButtonWidth
     $("#BlockName").width(BlockRealWidth + "px")
+    $("#BlockFilter").width(BlockRealWidth + "px")
+    var position = $("#BlockName").position()
+    var Top = 2*$("#BlockName").height() + position.top;
+    console.log(Top)
+
+    
+    //$("#BlockFilter").position().left($("#BlockName").position().left + "px")
+    $("#BlockFilter").css('top', Top + 'px');
+    var BackGround = document.getElementById("BackGround")
     var BackGround = document.getElementById("BackGround").childNodes
     BackGround[0].innerHTML.split("<br>").length
     var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
     var NumOfCol;
+}
+
+$(document).ready(function(){
+   Initialize();
+    // $("#BlockName").focusout(function(){
+    //     $("#BlockFilter").hide()
+    // })
+    $("#BlockName").focusin(function(){
+        $("#BlockFilter").show()
+    })
+    if ($("#BlockFilter").height() > 300){
+        $("#BlockFilter").height("300px")
+    }
+    else{
+        $("#BlockFilter").height("")
+    }
+    // $.get('blockchain/getAllBlockNames', (data, status) => {
+    // if(data.OK) {
+    //   var allBlockNames = data.OK.msg
+
+    //   var blockFilter = document.getElementById('blockFilter')
+    //   var firstBlockName = blockFilter.firstElementChild
+    //   for (var i in allBlockNames) {
+    //     var clone = firstBlockName.cloneNode(false)
+    //     clone.innerHTML = allBlockNames[i]
+    //     blockFilter.appendChild(clone)
+    //   }
+    // } else {
+    //   console.log('Cannot get data from servers! Please check your internet connection!')
+    // }
+})
+
+function filterFunction(cb) {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("BlockName");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("BlockFilter");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
     
+    if ($("#BlockFilter").height() > 300){
+        $("#BlockFilter").height("300px")
+    }
+    else{
+        $("#BlockFilter").height("")
+    }
+    if(typeof cb === "function") {
+      cb()
+    }
+}
+
     // window.setInterval(function() {
     //     for(i=0;i < BackGround.length - 1; i++)
     //     {
@@ -81,4 +130,34 @@ $(document).ready(function(){
     //         NumOfCol = BackGround[i].innerHTML = InsideText
     //     }
     // }, 50);
-}); 
+//}); 
+
+function selectABlockname(currentElement) {
+ // dropFunction()
+    console.log(currentElement)
+   // emptyASector('keySector')
+    var choosenBlock = currentElement.innerHTML
+    $("#BlockName").val(choosenBlock)
+    $("#BlockFilter").hide();
+//   $.post('blockchain/getHintsOfABlock', 
+//   {
+//     blockname: choosenBlock
+//   }, (data, status) => {
+//     if(data.OK) {
+//       var hints = data.OK.msg
+//       var keySector = document.getElementById('keySector')
+//       var firstHintDiv = keySector.firstElementChild
+
+//       var firstHint = firstHintDiv.firstElementChild
+//       firstHint.innerHTML = 
+//       (choosenBlock !== 'defaultblock') ? hints[0] : 'Keyword 1'
+//       for(var i = 1; i < hints.length; i++) {
+//         var clone = firstHintDiv.cloneNode(true)
+//         clone.firstElementChild.innerHTML = (hints[i]) ? hints[i] : 'Keyword ' + (++i)
+//         keySector.appendChild(clone)
+//       }
+//     } else {
+//       console.log('Cannot get data from servers! Please check your internet connection!')
+//     }
+//   })
+}

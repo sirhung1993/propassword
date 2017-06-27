@@ -2,65 +2,91 @@
 <!DOCTYPE html>
 <head>
   
-<meta charset="UTF-8">
-<title>Ez password </title>
-<link rel='shortcut icon' type='image/x-icon' href='views/images/key.png' />
-<!-- CSS (load bootstrap from a CDN) -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="layout/w3.css">
-<script src="layout/jquery.min.js"></script>
-<script src="src/Background.js"> </script>
-
+    <meta charset="UTF-8">
+    <title>Ez password </title>
+    <!-- CSS (load bootstrap from a CDN) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="layout/w3.css">
+    <script src="layout/jquery.min.js"></script>
+    <script src="src/Background.js"> </script>
+        
+    <!--[if !IE]--><style>
+        .forpw{
+            display: none
+        }
+    </style><!--[endif]-->
+    
+    
 </head>
 <body class="w3-black">
   
   <div class="w3-row" id="BackGround"
   style="position:fixed;z-index:-1;">
   </div>
-  <div class="w3-container">
-    <div class="w3-round-medium w3-transparent w3-display-middle w3-half w3-center w3-black" style="opacity:0.9">
-        <br>
-        <h1>BLOCK Name</h1>
-        <div class="w3-row" >
+    <div class="w3-container">
+        <div class="w3-round-medium w3-transparent w3-display-middle w3-half w3-center w3-black" style="opacity:0.9">
+            <br>
+            <h1>BLOCK Name</h1>
+            <div class="w3-row" >
 
             <div class="w3-col w3-hide-small" style="position:relative;width:5%"><p></p>
             </div>
-            <div class="w3-row w3-col" style="position:relative;width:90%" id="BlockContain">
-                
-                <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="block" placeholder="block name" type="text" id="BlockName" />
-                <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%" id="AddButton" onkeyup="ListAllBlock">
-                    <input class="w3-btn w3-hover-gray w3-border w3-text-white "
-                    style="height:100%;" type="button" value="&plus;" />
+                <div class="w3-row w3-col" style="position:relative;width:90%" id="BlockContain">
+                    
+                    <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="block" placeholder="block name" type="text" id="BlockName" onkeyup="filterFunction()" />
+                    <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%" id="AddButton">
+                        <input class="w3-btn w3-hover-gray w3-border w3-text-white "
+                        style="height:100%;" type="button" value="&plus;" />
+                    </div>
+                    <div class="w3-col w3-left w3-card-4" id="BlockFilter" style="position:absolute;z-index:1;opacity:0.9;display:none;overflow-y: scroll;">
+                        <div class="w3-btn w3-left-align w3-hover-white w3-hover-text-black" onclick="selectABlockname(this)" style="width:100%">defaultblock1</div> 
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">defaultblock2</a> 
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock3</a> 
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a> 
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                        <a class="w3-btn w3-left-align" onclick="selectABlockname(this)" style="width:100%">Aefaultblock4</a>
+                    </div>
+                    <br/>
+                    <br/>
                 </div>
-            </div>
-        </div><div class="w3-row w3-hide-small">
-            <div class="w3-col" style="width:5%">
-                <p></p>
-            </div>
+            </div><div class="w3-row w3-hide-small">
+                <div class="w3-col" style="width:5%">
+                    <p></p>
+                </div>
             <hr style="width:90%">
-        </div>
+            </div>
         
-        <div class="w3-row w3-hide-small">
-            <div class="w3-col" style="width:5%">
-                <p></p>
+            <div class="w3-row w3-hide-small">
+                <div class="w3-col" style="width:5%">
+                    <p></p>
+                </div>
+                <div class="w3-left w3-large">KEYWORD:</div>
             </div>
-            <div class="w3-left w3-large">KEYWORD:</div>
-        </div>
-        <div class="w3-row">
-
-            <div class="w3-col w3-hide-small" style="position:relative;width:5%"><p></p>
-            </div>
-            <div class="w3-row w3-col" style="position:relative;width:90%">
-                
-                <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="keyword" placeholder="a familiar keyword" type="password" onkeyup="ShowDeleteButton()"/>
-                <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%">
+            <div class="w3-row">
+                <div class="w3-col w3-hide-small" style="position:relative;width:5%"><p></p>
+                </div>
+                <div class="w3-row w3-col" style="position:relative;width:90%">
+                    
+                    <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="keyword" placeholder="a familiar keyword" type="password" />
+                    <div class="w3-row forpw" style="position:absolute;top:0;right:0%;height:100%">
+                        <input class="w3-btn w3-hover-gray w3-border-top w3-border-bottom"
+                        style="height:100%;" type="button" value="&times;"/><input class="w3-btn w3-hover-gray w3-border-right w3-border-top w3-border-bottom"
+                        style="height:100%;" type="button" value="&#9737;"/>
+                    </div>
                     
                 </div>
             </div>
-        </div>
       
-        <br>
-    </div>
+            <br>
+        </div>
     
   </div>
   <!--<div class="w3-row-padding" id="block">

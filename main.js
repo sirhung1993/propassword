@@ -16,7 +16,6 @@ app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 app.get('/',(req, res, next) => {
-	console.log(req.headers["x-forwarded-proto"])
 	if (req.headers["x-forwarded-proto"] === 'https' || process.env.OPERATION_MODE === 'DEV') {
 		next()
 	} else{

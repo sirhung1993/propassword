@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html class="w3-container w3-black">
+<html class="w3-black">
 <head>
   <% include ../partials/head %>
 </head>
-<body>
-  <header>
-      <% include ../partials/header %>
-  </header>
-  <% include ../partials/body %>
+<body class="w3-row">
+	<div class="w3-col" style="width: 20%;">
+		<p> </p>
+	</div>
 
-  <footer>
+	<div class="w3-col" style="width: 60%;">
+		<header>
+      		<% include ../partials/header %>
+  		</header>
+  			<% include ../partials/body %>
+	</div>
+  
+	<div class="w3-col" style="width: 20%;">
+		
+	</div>
+  <footer class="w3-col">
       <% include ../partials/footer %>
   </footer>
+
 </body>
 </html>

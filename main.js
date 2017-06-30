@@ -13,10 +13,10 @@ const Config = require('./config/Config.js')
 const config = new Config()
 
 app.use(helmet())
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
+// app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 
 app.get('/',(req, res, next) => {
-	if (req.headers["x-forwarded-proto"] === 'https' || process.env.OPERATION_MODE === 'DEV') {
+	if (req.headers["x-forwarded-proto"] === 'https' || config.operationMode === 'DEV') {
 		next()
 	} else{
 		res.redirect('https://ezkeytopass.herokuapp.com')

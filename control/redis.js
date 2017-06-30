@@ -1,9 +1,12 @@
 const redis = require('redis')
+const Config = require('../config/Config.js')
+const config = new Config()
+
 // const client = redis.createClient(process.env.REDIS_URL)
 
 module.exports = class Redis {
   constructor () {
-    this.db = redis.createClient(process.env.REDIS_URL)
+    this.db = redis.createClient(config.redisDB)
   }
 
   createNewBlock(blockname, hintsBlock) {

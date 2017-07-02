@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="layout/w3.css">
 <script src="layout/jquery.min.js"></script>
+<script src="layout/language.js"></script>
 <script src="src/Background.js"> </script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -30,19 +31,48 @@
         color: gray;
         opacity: 1;
     }
+    @media screen and (max-width: 600px){
+        #settingpannel{
+            display: none
+        }
+        #langButton{
+            display: inline;
+        }
+    }
+    
+    @media screen and (min-width: 600px){
+        #settingpannel{
+            display: block
+        }
+        #langButton{
+            display: none;
+        }
+
+    }
 </style>
 </head>
 <body class="w3-black">
-    <div class="w3-row" style="position:fixed;top:0;width:100%;z-index:5">
+    <div class="w3-content w3-small  w3-row w3-left " style="position: fixed;bottom: 3px;right: 3px;" id="settingpannel"> 
+        
+        <select class="w3-small w3-black w3-text-white w3-col FwhenS" id="lang"  style="width:85px" onchange="SelectLanguage()">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+        </select> 
+        <div class="w3-col material-icons FwhenS w3-row" style="cursor: pointer;width:20px;font-size:20px" id="feedback">feedback
+        </div>
+        <div class="w3-col material-icons" style="font-size:20px;width:20px;cursor: pointer" onclick="SettingOpen()">settings
+        </div>
+    </div>
+    <div class="w3-row w3-center" style="position:fixed;top:0;width:100%;z-index:5">
         <div class="w3-col  m2 l3 w3-hide-small" ><p></p>
         </div>
         <div class="w3-bar w3-center-align w3-black w3-col m8 l6" style="overflow:hidden;opacity:0.9;box-shadow:1px 1px 2px #80FFFF ,-1px -1px 2px #80FFFF;">
-            <div onclick="BackToHome()" class=" topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Home">Home</div>
-            <div onclick="BackToHome()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="About">About</div> 
-            <div onclick="BackToHome()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Usage">Usage</div>   
-            <div onclick="BackToHome()" class="topnav-icons w3-let w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Document" >Document</div>      
-            <div onclick="AddNewBlockOpen()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock">Add New Block</div>   
-            <div onclick="ChangeLanguage()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="language" id="lang">English</div>         
+            <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Home">Home</div>
+            <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="About">About</div> 
+            <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Usage">Usage</div>   
+            <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Document" >Document</div>      
+            <div onclick="AddNewBlockOpen()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock">Add New Block</div>   
+            <div onclick="ChangeLanguage()" class="w3-btn w3-hover-white w3-hover-text-black SwhenS" langkey="language" id="langButton">English</div>         
         </div>
     </div>
     <div class="w3-row w3-black" id="BackGround"
@@ -72,7 +102,7 @@
                 <div class="w3-col  m1 l2 w3-hide-small" ><p></p>
                 </div>
                 <div class="w3-row w3-col w3-content m10 l8" style="position:relative;" id="BlockContain">                    
-                    <input class="w3-input w3 -border w3-left-align w3-left w3-transparent w3-text-white" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock"
+                    <input class="w3-input w3-border w3-left-align w3-left w3-transparent w3-text-white" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock"
                     onkeyup="filterFunction(event)" onclick="OpenBlocFillter(event)" langkey="holder-BlockName"/>
                     
                     <div class="w3-col w3-left w3-card-4" id="BlockFilter" style="position:absolute;z-index:1;opacity:0.9;display:none;overflow-y: scroll;top:52px;max-height:300px">

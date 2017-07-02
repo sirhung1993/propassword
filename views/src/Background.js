@@ -10,8 +10,7 @@ function CreateCollunm(XLeft)
     var Zindex = -30 - Xsize;
     DivText = DivText.replace("__ZINDEX__", Zindex);
     Xsize*=2;
-    var MaxHeight = $(window).height()
-    var MaxWidth = $(window).width()
+    var MaxHeight = 2000;
     var NumOfCol = MaxHeight/Xsize*2 > 50 ?  MaxHeight/Xsize*2: 50;
     
     var Left = XLeft;
@@ -24,12 +23,16 @@ function CreateCollunm(XLeft)
     return Xsize + Left
 }
 
-
-
-function ShowDeleteButton()
+function SettingOpen()
 {
-    
+   // $("#settingpannel").animate({width:"toggle"},450)
+    $("#lang").animate({width:"toggle"},300, function()
+    {
+        $("#feedback").animate({width:"toggle"},150)
+    })
 }
+
+
 
 function showContent(element)
 {
@@ -188,23 +191,31 @@ function filterFunction(event) {
 $(document).ready(function(){
     var i = 0 ;
     var Xleft = -1;
-    var MaxWidth = $(window).width()
+    var MaxWidth = 4000
     
     if (navigator.userAgent.indexOf("Edge") >= 0 || navigator.userAgent.length === NaN )
     {
         $(".btnShowHidePassword").css("display", "none")
         $("[name='keyword']").css("padding-right","0")
     }
+    var lang = navigator.language
+    if (lang.indexOf("en") >= 0)
+    {
+        lang = "en"
+    }
+    else if (lang.indexOf("vi") >= 0)
+    {
+        lang = "vi"
+    }
+    $("#lang").val(lang)
+    SelectLanguage()
     // $("btnShowHidePassword").Edge
     while( Xleft < MaxWidth + 5){
         Xleft = CreateCollunm(Xleft);
         // i++
     }
-   
-    // var BackGround = document.getElementById("BackGround").childNodes
-    // BackGround[0].innerHTML.split("<br>").length
-    // var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
-    // var NumOfCol;
+    SettingOpen()
+    
     
 //    $.get('https://ezkeytopass.herokuapp.com/blockchain/getAllBlockNames', function(data, status) {
        
@@ -223,6 +234,10 @@ $(document).ready(function(){
 //         }
 //    })
 
+    // var BackGround = document.getElementById("BackGround").childNodes
+    // BackGround[0].innerHTML.split("<br>").length
+    // var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
+    // var NumOfCol;
     // window.setInterval(function() {
     //     for(i=0;i < BackGround.length - 1; i++)
     //     {
@@ -234,7 +249,7 @@ $(document).ready(function(){
     //         }
     //         NumOfCol = BackGround[i].innerHTML = InsideText
     //     }
-    // }, 10);
+    // }, 200);
 }); 
 
 function DeleteThisHint(element)
@@ -259,21 +274,16 @@ function AddNewHintBlock()
 }
 function UpdateHint()
 {
-    $.getJSON("layout/language.json", function(dataresult){
-        var lang = "vi";
-        if ($("#lang").text() === "English")
-        {
-            lang = "en";
-        }
-        var Hint = dataresult[lang].Hint;
-        var AllHintsBlock = document.getElementById("HintsBlock");
+    element = document.getElementById("lang")
+    var lang = element.value;  
+    var Hint = language[lang].Hint;
+    var AllHintsBlock = document.getElementById("HintsBlock");
 
-        for (var i = 0; i < AllHintsBlock.children.length; i++)
-        {
-            var HintBlock = AllHintsBlock.children[i];
-            HintBlock.children[1].children[1].innerHTML = "<span langkey=\"Hint\">" + Hint + "</span>"+" &#35;" + (i+1) + ":";
-        }
-    })
+    for (var i = 0; i < AllHintsBlock.children.length; i++)
+    {
+        var HintBlock = AllHintsBlock.children[i];
+        HintBlock.children[1].children[1].innerHTML = "<span langkey=\"Hint\">" + Hint + "</span>"+" &#35;" + (i+1) + ":";
+    }
 }
 function BackToHome()
 {
@@ -355,16 +365,11 @@ function selectABlockname(element)
             }
             else
             {
-                $.getJSON("layout/language.json", function(dataresult){
-                    var lang = "vi";
-                    if ($("#lang").text() === "English")
-                    {
-                        lang = "en";
-                    }
-                    var KEYWORD = dataresult[lang].keyword;
-                    firstHintDiv = keySector.firstElementChild
-                    firstHintDiv.children[1].children[1].innerHTML = "<span langkey=\"keyword\">"+KEYWORD + ":</span>"
-                })
+                element = document.getElementById("lang")
+                var lang = element.value;  
+                var KEYWORD = language[lang].keyword;
+                firstHintDiv = keySector.firstElementChild
+                firstHintDiv.children[1].children[1].innerHTML = "<span langkey=\"keyword\">"+KEYWORD + ":</span>";
             }  
             if (document.getElementById("BlockName").value == "defaultblock")
             {
@@ -394,27 +399,28 @@ function AddnewKeyword()
 }
 function RemoveLastKeyword()
 {
-    var keySector = document.getElementById('keySector')
-    if (keySector.children.length > 0)
+    var keySector = document.getElementById('keySector');
+    if (keySector.children.length > 1)
     {
-        keySector.removeChild(keySector.lastChild);       
+        keySector.removeChild(keySector.lastChild)
+        
+        //console.log(document.getElementById('keySector').children.length)
+        if (document.getElementById('keySector').children.length > 1)
+        {
+            UpdateKeyword()
+        }
+        else
+        {       
+            element = document.getElementById("lang") 
+            var lang = element.value;  
+            var KEYWORD = language[lang].keyword;  
+            keySector = document.getElementById('keySector')
+            keySector.children[0].children[1].children[1].innerHTML = "<span langkey=\"keyword\">" + KEYWORD + "</span>";
+           // $("span[langkey='keyword']").text =  KEYWORD 
+        }
+              
     }
-    if (document.getElementById('keySector').children.length > 1)
-    {
-        UpdateKeyword()
-    }
-    else
-    {
-        $.getJSON("layout/language.json", function(dataresult){
-            var lang = "vi";
-            if ($("#lang").text() === "English")
-            {
-                lang = "en";
-            }
-            var KEYWORD = dataresult[lang].keyword;
-            keySector.children[1].children[0].children[1].innerHTML = "<span langkey=\"keyword\">"+ KEYWORD + "</span>:"
-        })
-    }
+    
 }
 function ReForcusthis(element)
 {
@@ -472,23 +478,16 @@ function slicePassword()
 }
 
 function UpdateKeyword()
-{
-    $.getJSON("layout/language.json", function(dataresult){
-        var lang = "vi";
-        if ($("#lang").text() === "English")
-        {
-            lang = "en";
-        }
-        var KEYWORD = dataresult[lang].keyword;
-       
-        var keySector = document.getElementById('keySector').children
-        for (var i = 0; i < keySector.length; i++)
-        {
-            var Z = "<span langkey=\"keyword\">" + KEYWORD + "</span> &#35;" + (i+1) + ":";
-            keySector[i].children[1].children[1].innerHTML = Z;
-        }
-    })
-    
+{    
+    element = document.getElementById("lang")
+    var lang = element.value;  
+    var KEYWORD = language[lang].keyword;       
+    var keySector = document.getElementById('keySector').children
+    for (var i = 0; i < keySector.length; i++)
+    {
+        var Z = "<span langkey=\"keyword\">" + KEYWORD + "</span> &#35;" + (i+1) + ":";
+        keySector[i].children[1].children[1].innerHTML = Z;
+    }
 }
 
 function SubmitBlockName()
@@ -555,29 +554,38 @@ $(document).click(function(event) { 
     }        
 })
 
+function SelectLanguage()
+{
+    element = document.getElementById("lang")
+    var lang = element.value;    
+    var LangHash = language[lang];
+    for (var key in LangHash)
+    {
+        if (key.indexOf("val-") === 0)
+        {
+            $("[langkey='" + key+ "']").val( LangHash[key]);
+        }
+        else if(key.indexOf("holder-") === 0)
+        {
+            $("[langkey='" + key+ "']").attr("placeholder",LangHash[key]);
+        }            
+        else{
+            $("[langkey='" + key+ "']").text( LangHash[key]);
+        }
+    }
+    
+}
+
 function ChangeLanguage()
 {
-    var lang = "en";
-    if ($("#lang").text() === "English")
+    if ($("#langButton").text() === "English")
     {
-        lang = "vi";
+        $("#lang").val("vi");
     }
-    $.getJSON("layout/language.json", function(dataresult){
-         var LangHash = dataresult[lang];
-         console.log(LangHash);
-         for (var key in LangHash)
-         {
-            if (key.indexOf("val-") === 0)
-            {
-                $("[langkey='" + key+ "']").val( LangHash[key]);
-            }
-            else if(key.indexOf("holder-") === 0)
-            {
-                $("[langkey='" + key+ "']").attr("placeholder",LangHash[key]);
-            }            
-            else{
-                $("[langkey='" + key+ "']").text( LangHash[key]);
-            }
-         }
-    })
+    else
+    {
+        $("#lang").val("en");
+    }
+    console.log("langButton")
+    SelectLanguage();
 }

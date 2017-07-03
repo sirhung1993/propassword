@@ -18,13 +18,20 @@ module.exports = class Config {
       // this.encryptingSeed = function(username) {
       //   return username + 'It need to be encrypted here'
       // }
+
       if (process.env.SECRET_KEY_2 && process.env.SECRET_KEY_3) {
         this.sessionSecret = md5(md5(process.env.SECRET_KEY_2) + process.env.SECRET_KEY_3)
       } else {
           this.sessionSecret = 'something need to be hide'
       }
+
       this.operationMode = process.env.OPERATION_MODE || 'DEV'
+
       this.redisDB = process.env.REDIS_URL || 'link/to/your/redisDB'
+
+      this.encryptingSeed = function(userPassword) {
+        return md5(md5(userPassword + this.passwordKey))
+      }
       
     } else if (DEVorPro === 'PRO' || productionConfigDoesNotExist === undefined) {
       //  For specific purpose configurations - write the content below in ~/config/ProConfig.js/ It will replace all the default configurations.

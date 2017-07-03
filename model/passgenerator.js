@@ -9,7 +9,9 @@ router.post('/', (req, res, next) => {
   try {
     encryptedPassword = encryptAlgo.encryptPassword(blockid, keyword)
   } catch(err) {
+  	console.log(err)
     res.status(200).json({err: {msg: err}})
+    return
   }
   res.status(200).json({OK: {msg: encryptedPassword}})
 })

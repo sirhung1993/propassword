@@ -23,8 +23,11 @@
         "waiting":"Waiting",
         "SubmitNewBlockSuccess":"Submit New Block Successfull!",
         "language":"English",
-        "BlockName":"BLOCK NAME"
-        
+        "BlockName":"BLOCK NAME",
+        "footer-description-1" : "Professional password from easy to remember keywords",
+        "copyleft-1": "Developed by :",
+        "copyleft-2": "Design by: ",
+        "Powered-By": "Powered by "
     },
     "vi":{
         "Home":"Trang chủ",
@@ -50,6 +53,10 @@
         "waiting":"Đang chờ phải hồi từ máy chủ",
         "SubmitNewBlockSuccess":"Thêm Khối mới thành công!",
         "language":"Tiếng Việt",        
-        "BlockName":"TÊN KHỐI"
+        "BlockName":"TÊN KHỐI",
+        "footer-description-1": "Mật khẩu bảo mật cao từ những từ khóa dễ nhớ",
+        "copyleft-1": "Phát triển bởi:",
+        "copyleft-2": "Thiết kế bởi: ",
+        "Powered-By": "Được hỗ trợ từ "
     }
 }

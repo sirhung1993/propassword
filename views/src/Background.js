@@ -39,11 +39,11 @@ function showContent(element)
     if(textbox.getAttribute("type") === "password")
     {
         textbox.setAttribute("type","text")  
-        element.setAttribute("src", "images/showcontent_red.png") 
+        element.setAttribute("src", "views/images/showcontent_red.png") 
     }
     else
     {
-        element.setAttribute("src", "images/showcontent.png")
+        element.setAttribute("src", "views/images/showcontent.png")
         textbox.setAttribute("type","password")
     }
     
@@ -206,22 +206,22 @@ $(document).ready(function(){
     // var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
     // var NumOfCol;
     
-//    $.get('https://ezkeytopass.herokuapp.com/blockchain/getAllBlockNames', function(data, status) {
+   $.get('blockchain/getAllBlockNames', function(data, status) {
        
-//         if(data.OK) {
-//             var allBlockNames = data.OK.msg
-//             var blockFilter = document.getElementById('BlockFilter')
-//             var firstBlockName = blockFilter.firstElementChild
-//             for (var i in allBlockNames) {
-//                 var clone = firstBlockName.cloneNode(false)
-//                 clone.innerHTML = allBlockNames[i]
-//                 blockFilter.appendChild(clone)
-//             }
-//         } 
-//         else {
-//             console.log('Cannot get data from servers! Please check your internet connection!')
-//         }
-//    })
+        if(data.OK) {
+            var allBlockNames = data.OK.msg
+            var blockFilter = document.getElementById('BlockFilter')
+            var firstBlockName = blockFilter.firstElementChild
+            for (var i in allBlockNames) {
+                var clone = firstBlockName.cloneNode(false)
+                clone.innerHTML = allBlockNames[i]
+                blockFilter.appendChild(clone)
+            }
+        } 
+        else {
+            console.log('Cannot get data from servers! Please check your internet connection!')
+        }
+   })
 
     // window.setInterval(function() {
     //     for(i=0;i < BackGround.length - 1; i++)
@@ -279,7 +279,7 @@ function BackToHome()
 {
     $("#NewBlock").hide( function(){
         
-        // $.get('https://ezkeytopass.herokuapp.com/blockchain/getAllBlockNames', function(data, status) {
+        // $.get('blockchain/getAllBlockNames', function(data, status) {
         //     if(data.OK) {
         //         var allBlockNames = data.OK.msg
                 
@@ -319,7 +319,7 @@ function selectABlockname(element)
     document.getElementById("BlockName").value = element.innerHTML;
     $('#BlockFilter').toggle();
     var choosenBlock = element.innerHTML
-    $.post('https://ezkeytopass.herokuapp.com/blockchain/getHintsOfABlock', 
+    $.post('blockchain/getHintsOfABlock', 
         {
             blockname: choosenBlock
         }, 
@@ -330,7 +330,7 @@ function selectABlockname(element)
         if(data.OK) {
             var hints = data.OK.msg
             var keySector = document.getElementById('keySector')                
-            
+            console.log(hints)
             
             var firstHintDiv = keySector.firstElementChild
             //firstHintDiv.style.display = ""
@@ -437,7 +437,7 @@ function generatePassword() {
     $("input[name='keyword']").each(function() {
         keyword.push($(this).val());
     })
-    $.post('https://ezkeytopass.herokuapp.com/passgen', {
+    $.post('passgen', {
         blockname: blockname,
         keyword: keyword
     }, function(data, status) {
@@ -499,7 +499,7 @@ function SubmitBlockName()
         hint.push($(this).val())
     })
     $("#modal").show()
-    $.post('https://ezkeytopass.herokuapp.com/blockchain', {
+    $.post('blockchain', {
         blockname: blockname,
         hint: hint
     }, function (data, status) {
@@ -543,17 +543,9 @@ function CopyKeyUp()
 function OpenBlocFillter(event)
 {
     $('#BlockFilter').toggle()
-    $('#BlockFilter').toggle()
    // event.stopPropagation(); 
 }
 
-$(document).click(function(event) { 
-    if(!$(event.target).closest('#BlockFilter').length) {
-        if($('#BlockFilter').is(":visible")) {
-            $('#BlockFilter').hide();
-        }
-    }        
-})
 
 function ChangeLanguage()
 {

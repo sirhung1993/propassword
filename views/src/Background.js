@@ -210,29 +210,29 @@ $(document).ready(function(){
     $("#lang").val(lang)
     SelectLanguage()
     // $("btnShowHidePassword").Edge
-    while( Xleft < MaxWidth + 5){
-        Xleft = CreateCollunm(Xleft);
-        // i++
-    }
+    // while( Xleft < MaxWidth + 5){
+    //     Xleft = CreateCollunm(Xleft);
+    //     // i++
+    // }
     SettingOpen()
     
     
-//    $.get('https://ezkeytopass.herokuapp.com/blockchain/getAllBlockNames', function(data, status) {
+   $.get('https://ezkeytopass.herokuapp.com/blockchain/getAllBlockNames', function(data, status) {
        
-//         if(data.OK) {
-//             var allBlockNames = data.OK.msg
-//             var blockFilter = document.getElementById('BlockFilter')
-//             var firstBlockName = blockFilter.firstElementChild
-//             for (var i in allBlockNames) {
-//                 var clone = firstBlockName.cloneNode(false)
-//                 clone.innerHTML = allBlockNames[i]
-//                 blockFilter.appendChild(clone)
-//             }
-//         } 
-//         else {
-//             console.log('Cannot get data from servers! Please check your internet connection!')
-//         }
-//    })
+        if(data.OK) {
+            var allBlockNames = data.OK.msg
+            var blockFilter = document.getElementById('BlockFilter')
+            var firstBlockName = blockFilter.firstElementChild
+            for (var i in allBlockNames) {
+                var clone = firstBlockName.cloneNode(false)
+                clone.innerHTML = allBlockNames[i]
+                blockFilter.appendChild(clone)
+            }
+        } 
+        else {
+            console.log('Cannot get data from servers! Please check your internet connection!')
+        }
+   })
 
     // var BackGround = document.getElementById("BackGround").childNodes
     // BackGround[0].innerHTML.split("<br>").length
@@ -354,13 +354,13 @@ function selectABlockname(element)
 
                 for(var i = 1; i < hints.length; i++) {
                     var clone = firstHintDiv.cloneNode(true)
-                    var Hint = clone.children[0].children[1]
+                    var Hint = clone.children[1].children[1]
                     Hint.innerHTML = hints[i];
-                    var Input = clone.children[1].children[1].children[0];
+                    var Input = clone.children[2].children[1].children[0];
                     Input.value = "";
                     keySector.appendChild(clone)
                 }
-                firstHintDiv.children[0].children[1].innerHTML = hints[0]
+                firstHintDiv.children[1].children[1].innerHTML = hints[0]
                 //firstHintDiv.style.display = "none"
             }
             else
@@ -546,12 +546,12 @@ function OpenBlocFillter(event)
    // event.stopPropagation(); 
 }
 
-$(document).click(function(event) { 
-    if(!$(event.target).closest('#BlockFilter').length) {
-        if($('#BlockFilter').is(":visible")) {
-            $('#BlockFilter').hide();
-        }
-    }        
+$(document).click(function(event) { 
+    if(!$(event.target).closest('#BlockFilter').length) {
+        if($('#BlockFilter').is(":visible")) {
+            $('#BlockFilter').hide();
+        }
+    }        
 })
 
 function SelectLanguage()

@@ -35,5 +35,13 @@ router.post('/getHintsOfABlock', (req, res, next) => {
     })
 })
 
+// router.post('/deleteAllBlock', (req, res, next) => {
+//   redis.deleteAllBlock()
+//   .then((suscess) => {
+//     res.status(200).json({OK: {msg: suscess}})
+//   }).catch((err) => {
+//     res.status(200).json({err: {msg: err}})
+//   })
+// })
 
 module.exports = router

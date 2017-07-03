@@ -17,9 +17,11 @@ app.use(helmet())
 
 app.get('/',(req, res, next) => {
 	if (req.headers["x-forwarded-proto"] === 'https' || config.operationMode === 'DEV') {
+		// console.log(req.headers['host'])
+		// console.log(req.url)
 		next()
 	} else{
-		res.redirect('https://ezkeytopass.herokuapp.com')
+		res.redirect('https://' + req.headers['host'] + req.url)
 		// next()
 	}
 })
@@ -39,8 +41,9 @@ app.get('/', function (req, res, next) {
   res.render('pages/index')
 })
 
-app.get('/newblock', function (req, res, next) {
-  res.render('pages/createnewblock')
+app.get('/about', function (req, res, next) {
+  // console.log("https://" + req.hostname + req.url)
+  res.render('pages/about')
 })
 
 app.get('(error_page|*)' , function ( req , res , next) {

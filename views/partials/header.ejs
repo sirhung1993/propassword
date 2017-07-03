@@ -2,11 +2,22 @@
         <div class="w3-col  m2 l3 w3-hide-small" ><p></p>
         </div>
         <div class="w3-bar w3-center-align w3-black w3-col m8 l6" style="overflow:hidden;opacity:0.9;box-shadow:1px 1px 2px #80FFFF ,-1px -1px 2px #80FFFF;">
-            <div onclick="BackToHome()" class=" topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Home">Home</div>
- <!--            <div onclick="BackToHome()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="About">About</div> 
-            <div onclick="BackToHome()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Usage">Usage</div>   
-            <div onclick="BackToHome()" class="topnav-icons w3-let w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Document" >Document</div>      
-            <div onclick="AddNewBlockOpen()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock">Add New Block</div>   --> 
-            <div onclick="ChangeLanguage()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black w3-orange" langkey="language" id="lang">English</div>         
+            <a href="/" onclick="BackToHome()" class=" topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Home">Home</a>
+            <a href="about" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="About">About</a> 
+<!--             <div onclick="BackToHome()" class="topnav-icons w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Usage">Usage</div>   
+            <div onclick="BackToHome()" class="topnav-icons w3-let w3-bar-item w3-btn w3-hover-white w3-hover-text-black" langkey="Document" >Document</div>   -->    
+     
+            <div onclick="AddNewBlockOpen()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock">Add New Block</div>             
+            <div class="w3-content w3-small  w3-row w3-left " style="position: fixed;bottom: 3px;right: 3px;" id="settingpannel"> 
+                
+                <select class="w3-small w3-black w3-text-white w3-col FwhenS" id="lang"  style="width:85px" onchange="SelectLanguage()">
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="en">English</option>
+                </select> 
+                <div class="w3-col material-icons FwhenS w3-row" style="cursor: pointer;width:20px;font-size:20px" id="feedback">feedback
+                </div>
+                <div class="w3-col material-icons" style="font-size:20px;width:20px;cursor: pointer" onclick="SettingOpen()">settings
+                </div>
+            </div>         
         </div>
     </div>

@@ -1,35 +1,50 @@
 <!-- views/pages/about.ejs -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="w3-black">
 <head>
     <% include ../partials/head %>
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet"> 
+    <style>
+        .about-font {
+            font-family: 'Libre Baskerville', serif;
+        }
+        .sup {
+          position: relative;
+          bottom: 1ex; 
+          font-size: 80%;
+        }        
+    </style>
 </head>
 <body class="container">
 
     <header>
         <% include ../partials/header %>
     </header>
-
+<br />
+<br />
+<br />
+<br />
     <main>
-        <div class="row">
-            <div class="col-sm-8">
+        <div>
+            <p class="about-font" langkey="html-content">
+                There are a lot of websites and applications, for example, email, favourite forums or social networks having password authentication. <br />
+                Most of the cases, the passwords are the same or nearly the same among the websites with a unique login account.<br />
+                There is a security risk if the above situation is occured, only one leaked password is needed to <i>hack</i> all the accounts on these website. <br />
+            <br />
+                Thus, <a href="../">easykeytopass</a> is used to organize and memorize all your passwords with a block of <b>HINT(S)</b> and <b>KEYWORD(S)</b>. <br />
 
-                <div class="jumbotron">
-                    <b>This application may help you see your future fortune or legacy. </b>
-                    <p>Welcome to the happier future!</p>
-                </div>
+                In short, a constant password is generated after input the correct <b>BLOCK NAME</b> and <b>KEYWORDS</b> for each hints.<br />
+                <br />
+                <br />
+                About us: <br />
+                We have faced the issue that <b>"one password for all"</b>. <br />
+                If the password is disclosed, there are tons of thing need to be change. <br />
+                <br />
+                With keyword-based password, the only thing we need to remember are the <b>BLOCK NAME</b> and answer the listed hint(s).
+                <br />
 
-            </div>
-            <div class="col-sm-4">
-
-                <div class="well">
-                    <b>You could improve this app by help us here <a href="https://github.com/sirhung1993/yoursaving/issues">
-                        Submit the bug here!</a>
-                    </b>
-                </div>
-
-            </div>
+            </p>
         </div>
     </main>
 

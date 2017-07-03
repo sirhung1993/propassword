@@ -66,4 +66,17 @@ module.exports = class Redis {
   	})
   }
 
+    deleteAllBlock() {
+    return new Promise((resolve, reject) => {
+      this.db.flushdb((err, succeeded) => {
+        if(!err) {
+          resolve(succeeded)
+        } else {
+          reject(err)
+        }
+      })
+    })
+  }
+
+
 }

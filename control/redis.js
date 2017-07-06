@@ -26,7 +26,7 @@ module.exports = class Redis {
 
   		var createNewBlock2 = createNewBlock.then(() => {
   			return new Promise((resolve, reject) => {
-		  		this.db.sadd(blockname, hintsBlock, (err, reply) => {
+		  		this.db.rpush(blockname, hintsBlock, (err, reply) => {
 			  		if(!err) {
 			  			resolve(reply)
 			  		} else {
@@ -56,7 +56,7 @@ module.exports = class Redis {
 
   getHintsOfABlock(blockname) {
   	return new Promise((resolve, reject) => {
-  		this.db.smembers(blockname, (err, hints) => {
+  		this.db.lrange(blockname, 0, -1,(err, hints) => {
   			if(!err) {
   				resolve(hints)
   			} else {

@@ -3,18 +3,15 @@
 <!DOCTYPE html>
 <html lang="en" class="w3-black">
 <head>
-    <% include ../partials/head %>
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet"> 
-    <style>
-        .about-font {
-            font-family: 'Libre Baskerville', serif;
-        }
-        .sup {
-          position: relative;
-          bottom: 1ex; 
-          font-size: 80%;
-        }        
-    </style>
+    <meta charset="UTF-8">
+    <title>About Easytopass</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="layout/w3.css">
+    <script src="layout/jquery.min.js"></script>
+    <script src="layout/language.js"></script>
+    <script src="src/Background.js"> </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="layout/body.css">
 </head>
 <body class="container">
 
@@ -25,29 +22,82 @@
 <br />
 <br />
 <br />
-    <main>
-        <div>
-            <p class="about-font" langkey="html-content">
-                There are a lot of websites and applications, for example, email, favourite forums or social networks having password authentication. <br />
-                Most of the cases, the passwords are the same or nearly the same among the websites with a unique login account.<br />
-                There is a security risk if the above situation is occured, only one leaked password is needed to <i>hack</i> all the accounts on these website. <br />
-            <br />
-                Thus, <a href="../">easykeytopass</a> is used to organize and memorize all your passwords with a block of <b>HINT(S)</b> and <b>KEYWORD(S)</b>. <br />
-
-                In short, a constant password is generated after input the correct <b>BLOCK NAME</b> and <b>KEYWORDS</b> for each hints.<br />
-                <br />
-                <br />
-                About us: <br />
-                We have faced the issue that <b>"one password for all"</b>. <br />
-                If the password is disclosed, there are tons of thing need to be change. <br />
-                <br />
-                With keyword-based password, the only thing we need to remember are the <b>BLOCK NAME</b> and answer the listed hint(s).
-                <br />
-
-            </p>
+    <div id="main" class="w3-row">        
+        <div class="w3-col about-LeftBlankCol ">
+            <p> </p>
         </div>
-    </main>
+        <div class="w3-col about-CenterCol">
+            
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="w3-round-medium w3-transparent w3-center w3-black w3-col" style="opacity:0.9;box-shadow:1px 1px 8px #80FFFF,-1px -1px 8px #80FFFF;padding:2px" >
+                
+                <div style="position: relative;">
+                    <div class="w3-topnav w3-black w3-col w3-left" style=" opacity:0.9;box-shadow:1px 1px 2px #80FFFF ,-1px -1px 2px #80FFFF; padding: 0">
+                        <a href="https://www.easykeytopass.com/">
+                            <div class="w3-btn w3-hover-white w3-hover-text-black" langkey="Home"  style="margin: 3px 1px">Home</div>
+                        </a>
+                        <a href="https://www.easykeytopass.com/about">
+                            <div  class="w3-btn w3-hover-white w3-hover-text-black " langkey="About" style="margin: 3px 1px">About</div>                                                        
+                        </a>
+<!--                         <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Usage"  style="margin: 3px 1px">Usage</div>   
+                        <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Document" style="margin: 3px 1px">Document</div>     -->
+                              
+                    </div>
+                </div>
+                <div class="w3-col about-Side " >
+                    <p> </p>
+                </div>
+                <div class="w3-col about-Center w3-black" >
+                    <h1 class="w3-text-white w3-border-bottom w3-border-gray w3-left-align" style="width:100%"
+                    langkey="About">About</h1>
+                    <br/>
+                    <div class="w3-text-white w3-black w3-left-align w3-card-4" langkey="html-content" 
+                    style="max-height: 500px; overflow-y: auto">
+                        
+                    </div>
+                    <br/>
 
+                </div>
+                
+               
+                <div class="w3-col about-Side ">
+                    <p> </p>
+                </div>
+                
+            </div>
+          
+        </div>
+        <div class="w3-col about-LeftBlankCol">
+            <p> </p>
+        </div>
+        
+    </div>    
+<div id="social" class="w3-panel w3-center">
+        <a href="http://www.facebook.com/sharer.php?u=https://www.easykeytopass.com/" target="_blank">
+            <i class="fa fa-facebook-official" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="facebook"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Visiting%20https%3A%2F%2Fwww.easykeytopass.com" target="_blank">
+            <i class="fa fa-twitter-square" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="twiter"></i>
+        </a>
+        <a href="https://plus.google.com/share?url=https://www.w3schools.com/html/default.asp" target= "_blank">
+        <i class="fa fa-google-plus-square " style="font-size:48px; color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="google"></i>
+        </a>
+        <a href="https://www.facebook.com/easykeytopass" target="_blank">
+            <i class="fa fa-thumbs-o-up" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="likefacebook"></i>
+        </a>
+    </div>
+    
+    <div id="social" class="w3-panel w3-center">
+        
+        <i class="w3-text-gray w3-small" style="display:none" id="twiter">Share on twiter</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="google">Share on Google plus</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="facebook">Share on facebook</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="likefacebook">Like us on facebook</i>
+    </div>
     <footer>
         <% include ../partials/footer %>
     </footer>

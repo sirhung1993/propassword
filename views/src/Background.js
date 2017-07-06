@@ -1,15 +1,14 @@
 var AllBlock;
-var mainLanguage = document.getElementsByTagName("html")[0]
 
 function CreateCollunm(XLeft)
 {
-    var InitialText = '<div style="color:#80EE80; opacity:0.4;text-shadow:1px 1px 8px #30EE30,-1px -1px 8px #30EE30;font-family: \'Courier\';z-index:__ZINDEX__;font-size:__SIZE__px;line-height: 100%;top:0px;left:__LEFT__px;position:fixed">__TEXT__</div>';
+    var InitialText = '<div style="color:#80EE80; opacity:0.45;text-shadow:1px 1px 8px #30EE30,-1px -1px 8px #30EE30;font-family: \'Courier\';z-index:__ZINDEX__;font-size:__SIZE__px;line-height: 100%;top:60px;left:__LEFT__px;position:fixed">__TEXT__</div>';
     var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
     var InsideText="";
     var Xsize = Math.floor(Math.random()*25) + 5;   
     var DivText = InitialText.replace("__SIZE__", Xsize); 
-    var Zindex = -30 - Xsize;
-    DivText = DivText.replace("__ZINDEX__", Zindex);
+    //var Zindex = -30 - Xsize;
+    DivText = DivText.replace("__ZINDEX__", -5);
     Xsize*=2;
     var MaxHeight = 2000;
     var NumOfCol = MaxHeight/Xsize*2 > 50 ?  MaxHeight/Xsize*2: 50;
@@ -24,17 +23,18 @@ function CreateCollunm(XLeft)
     return Xsize + Left
 }
 
-function SettingOpen()
-{
-   // $("#settingpannel").animate({width:"toggle"},450)
-    $("#lang").animate({width:"toggle"},300, function()
-    {
-        $("#feedback").animate({width:"toggle"},150)
-    })
-}
+
+// function SettingOpen()
+// {
+//    // $("#settingpannel").animate({width:"toggle"},450)
+//     $("#lang").animate({width:"toggle"},300, function()
+//     {
+//         $("#feedback").animate({width:"toggle"},150)
+//     })
+// }
 
 
-
+//keep
 function showContent(element)
 {
     var Parent = element.parentNode.parentNode;
@@ -72,6 +72,8 @@ function showContent(element)
 //     var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
 //     var NumOfCol;
 // });
+
+//fixed
 function IsVisible(div)
 {
     var Arr =[];
@@ -85,7 +87,7 @@ function IsVisible(div)
     }
     return Arr;
 }
-
+//fix
 function filterFunction(event) {
     
     var x = event.which || event.keyCode;
@@ -158,11 +160,11 @@ function filterFunction(event) {
     }
     else
     {
-        
         for (i = 0; i < a.length; i++) {
             if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
                 a[i].style.display = "";
-            } else {
+            } 
+            else {
                 a[i].style.display = "none";
             }
             a[i].style.color = "white";
@@ -189,10 +191,12 @@ function filterFunction(event) {
     }
 }
 
+//fix
 $(document).ready(function(){
     var i = 0 ;
     var Xleft = -1;
     var MaxWidth = 4000
+    
     if (navigator.userAgent.indexOf("Edge") >= 0 || navigator.userAgent.length === NaN )
     {
         $(".btnShowHidePassword").css("display", "none")
@@ -202,12 +206,10 @@ $(document).ready(function(){
     if (lang.indexOf("en") >= 0)
     {
         lang = "en"
-        mainLanguage.setAttribute("lang", lang)
     }
     else if (lang.indexOf("vi") >= 0)
     {
         lang = "vi"
-        mainLanguage.setAttribute("lang", lang)
     }
     $("#lang").val(lang)
     SelectLanguage()
@@ -216,10 +218,11 @@ $(document).ready(function(){
     //     Xleft = CreateCollunm(Xleft);
     //     // i++
     // }
-    // SettingOpen()
+    //SettingOpen()
     
     
    $.get('blockchain/getAllBlockNames', function(data, status) {
+       
         if(data.OK) {
             var allBlockNames = data.OK.msg
             var blockFilter = document.getElementById('BlockFilter')
@@ -252,27 +255,28 @@ $(document).ready(function(){
     //     }
     // }, 200);
 }); 
-
+//fixed
 function DeleteThisHint(element)
 {
-    var RemoveItem = element.parentNode.parentNode.parentNode.parentNode;
+    var RemoveItem = element.parentNode.parentNode.parentNode;
     var AllHintsBlock = document.getElementById("HintsBlock");
     if (AllHintsBlock.children.length > 1){
         AllHintsBlock.removeChild(RemoveItem)
     }
     UpdateHint()
 }
+//fixed
 function AddNewHintBlock()
 {
     var AllHintsBlock = document.getElementById("HintsBlock");
     
-    var Item = AllHintsBlock.childNodes[1];
-    //var InputText = Item.childNodes[3].childNodes[3].childNodes[1].value = ""
-    var CloneItem = Item.cloneNode(true)
-    CloneItem.children[2].children[1].children[0].value = ""
+    var Item = AllHintsBlock.children[0];
+    var CloneItem = Item.cloneNode(true);
+    CloneItem.children[2].children[0].value = ""
     AllHintsBlock.appendChild(CloneItem);
     UpdateHint()
 }
+//fixed
 function UpdateHint()
 {
     element = document.getElementById("lang")
@@ -283,54 +287,56 @@ function UpdateHint()
     for (var i = 0; i < AllHintsBlock.children.length; i++)
     {
         var HintBlock = AllHintsBlock.children[i];
-        HintBlock.children[1].children[1].innerHTML = "<span langkey=\"Hint\">" + Hint + "</span>"+" &#35;" + (i+1) + ":";
+        HintBlock.children[1].innerHTML = "<span langkey=\"Hint\">" + Hint + "</span>"+" &#35;" + (i+1) + ":";
     }
 }
+//fixed
 function BackToHome()
 {
     $("#NewBlock").hide( function(){
         
-        // $.get('/blockchain/getAllBlockNames', function(data, status) {
-        //     if(data.OK) {
-        //         var allBlockNames = data.OK.msg
+        $.get('blockchain/getAllBlockNames', function(data, status) {
+            if(data.OK) {
+                var allBlockNames = data.OK.msg
                 
-        //         var blockFilter = document.getElementById('BlockFilter')
-        //         var firstBlockName = blockFilter.firstElementChild
+                var blockFilter = document.getElementById('BlockFilter')
+                var firstBlockName = blockFilter.firstElementChild
             
-        //         var l = blockFilter.children.length
-        //         for (var i = 1; i < l; i++)
-        //         {
-        //             blockFilter.removeChild(blockFilter.children[1])
-        //         }
-        //         for (var i in allBlockNames) {
-        //             var clone = firstBlockName.cloneNode(false)
-        //             clone.innerHTML = allBlockNames[i]
-        //             blockFilter.appendChild(clone)
-        //         }
-        //         $("#MainBlock").show()
-        //     } 
-        //     else {
-        //         $("#MainBlock").show()
-        //         console.log('Cannot get data from servers! Please check your internet connection!')
-        //     }
+                var l = blockFilter.children.length
+                for (var i = 1; i < l; i++)
+                {
+                    blockFilter.removeChild(blockFilter.children[1])
+                }
+                for (var i in allBlockNames) {
+                    var clone = firstBlockName.cloneNode(false)
+                    clone.innerHTML = allBlockNames[i]
+                    blockFilter.appendChild(clone)
+                }
+                $("#MainBlock").show()
+            } 
+            else {
+                $("#MainBlock").show()
+                console.log('Cannot get data from servers! Please check your internet connection!')
+            }
 
-        // })
+        })
         $("#MainBlock").show();
     })
 }
+//fixed
 function AddNewBlockOpen()
 {
     $("#MainBlock").hide( function(){
         $("#NewBlock").show()
     })
 }
-
+//fixed
 function selectABlockname(element)
 {
     document.getElementById("BlockName").value = element.innerHTML;
     $('#BlockFilter').toggle();
     var choosenBlock = element.innerHTML
-    $.post('/blockchain/getHintsOfABlock', 
+    $.post('blockchain/getHintsOfABlock', 
         {
             blockname: choosenBlock
         }, 
@@ -352,16 +358,15 @@ function selectABlockname(element)
             }
             if (hints.length > 0)
             {
-
                 for(var i = 1; i < hints.length; i++) {
                     var clone = firstHintDiv.cloneNode(true)
-                    var Hint = clone.children[1].children[1]
-                    Hint.innerHTML = hints[i];
+                    var Hint = clone.children[1]
+                    Hint.innerHTML = "<span>" + hints[i] + "</span>";
                     var Input = clone.children[2].children[1].children[0];
                     Input.value = "";
                     keySector.appendChild(clone)
                 }
-                firstHintDiv.children[1].children[1].innerHTML = hints[0]
+                firstHintDiv.children[1].innerHTML = "<span>" + hints[0] + "</span>";
                 //firstHintDiv.style.display = "none"
             }
             else
@@ -370,7 +375,7 @@ function selectABlockname(element)
                 var lang = element.value;  
                 var KEYWORD = language[lang].keyword;
                 firstHintDiv = keySector.firstElementChild
-                firstHintDiv.children[1].children[1].innerHTML = "<span langkey=\"keyword\">"+KEYWORD + ":</span>";
+                firstHintDiv.children[1].innerHTML = "<span langkey=\"keyword\">"+KEYWORD + ":</span>";
             }  
             if (document.getElementById("BlockName").value == "defaultblock")
             {
@@ -388,16 +393,20 @@ function selectABlockname(element)
     })
 
 }
-
+//Fixed
 function AddnewKeyword()
 {
     var keySector = document.getElementById('keySector')
     var firstHintDiv = keySector.firstElementChild
     var clone = firstHintDiv.cloneNode(true)     
-    clone.children[1].children[1].children[0].value = ""
+    clone.children[2].children[0].value = ""     
+    clone.children[2].children[0].setAttribute("type", "password")
+    clone.children[2].children[1].children[0].setAttribute("src", "views/images/showcontent.png") 
     keySector.appendChild(clone)
     UpdateKeyword()
 }
+
+//fixed
 function RemoveLastKeyword()
 {
     var keySector = document.getElementById('keySector');
@@ -405,7 +414,6 @@ function RemoveLastKeyword()
     {
         keySector.removeChild(keySector.lastChild)
         
-        //console.log(document.getElementById('keySector').children.length)
         if (document.getElementById('keySector').children.length > 1)
         {
             UpdateKeyword()
@@ -416,13 +424,15 @@ function RemoveLastKeyword()
             var lang = element.value;  
             var KEYWORD = language[lang].keyword;  
             keySector = document.getElementById('keySector')
-            keySector.children[0].children[1].children[1].innerHTML = "<span langkey=\"keyword\">" + KEYWORD + "</span>";
+            keySector.children[0].children[1].innerHTML = "<span langkey=\"keyword\">" + KEYWORD + "</span>:";
            // $("span[langkey='keyword']").text =  KEYWORD 
         }
               
     }
     
 }
+
+//keep
 function ReForcusthis(element)
 {
     
@@ -437,6 +447,11 @@ function ReForcusthis(element)
     element.style.color = "black"; 
 }
 
+function emptyAllInput() {
+    $("input").val("")
+}
+
+//fixed
 function generatePassword() {
     var blockname = $("input[name='blockName']").val()
     
@@ -444,20 +459,30 @@ function generatePassword() {
     $("input[name='keyword']").each(function() {
         keyword.push($(this).val());
     })
-    $.post('/passgen', {
+    $.post('passgen', {
         blockname: blockname,
         keyword: keyword
     }, function(data, status) {
+        
         if(data.OK) {
             var z = data.OK.msg;
-            $("#hiddenpassbox").text(z);
-            slicePassword()
+            $("#hiddenpassbox").val(z);
+            slicePassword();            
+            $("#encryptedPassword").attr("type", "text");
+            $("#encryptedPassword").select();
+            document.execCommand("copy")
+            $("#encryptedPassword").attr("type", "password");
+            $("#hiddenpassbox").select();
 
+            setTimeout(function () {
+                emptyAllInput()
+            }, 1000 * 60 * 10)
         } else {
         console.log(data.err.msg)
         }
     })
 }
+//keep
 function slicePassword()
 {
     
@@ -472,12 +497,13 @@ function slicePassword()
     }
     else{
         $("#InvalidNoOfChar").hide()
-        var z = $("#hiddenpassbox").text()
+        var z = $("#hiddenpassbox").val()
         $("#encryptedPassword").val(z.slice(0,$("#quantity").val()))
         $("#ContentCopy").show();
+        $("#encryptedPassword").css("padding-right", "90px");
     }
 }
-
+//fixed
 function UpdateKeyword()
 {    
     element = document.getElementById("lang")
@@ -487,10 +513,10 @@ function UpdateKeyword()
     for (var i = 0; i < keySector.length; i++)
     {
         var Z = "<span langkey=\"keyword\">" + KEYWORD + "</span> &#35;" + (i+1) + ":";
-        keySector[i].children[1].children[1].innerHTML = Z;
+        keySector[i].children[1].innerHTML = Z;
     }
 }
-
+//keep
 function SubmitBlockName()
 {
     var blockname = $("input[name='newBlockName']").val()
@@ -499,11 +525,10 @@ function SubmitBlockName()
         hint.push($(this).val())
     })
     $("#modal").show()
-    $.post('/blockchain', {
+    $.post('blockchain', {
         blockname: blockname,
         hint: hint
     }, function (data, status) {
-        
 
         if(data.OK) {
             $("#waiting").hide("fast", function (){
@@ -513,40 +538,37 @@ function SubmitBlockName()
                         $("#waiting").show("fast");
                         $("#modal").hide( function(){
                             BackToHome();
-                        })
-                        
-                    }, 3000);
+                        })                        
+                    }, 5000);
                 })
             })
         } else {
         console.log(data.err.msg)
     }
-        $("#modal").hide()
-    })
+       // $("#modal").hide()
+    })  
 
 }
-
+//fix
 function CopyKeyDown()
 {
     $("#ContentCopy").css("color", "red");
+    $("#encryptedPassword").attr("type", "text");
     $("#encryptedPassword").select();
     document.execCommand("copy")
+    $("#encryptedPassword").attr("type", "password");
+    $("#hiddenpassbox").select();
 }
-
+//fix
 function CopyKeyUp()
 {
     $("#ContentCopy").css("color", "white");
-    $("#ContentCopy").hide();
+    // $("#ContentCopy").hide();
+    $("#encryptedPassword").css("padding-right", "50px");
 }
 
 
-function OpenBlocFillter(event)
-{
-    $('#BlockFilter').toggle()
-    $('#BlockFilter').toggle()
-   // event.stopPropagation(); 
-}
-
+//keep
 $(document).click(function(event) { 
     if(!$(event.target).closest('#BlockFilter').length) {
         if($('#BlockFilter').is(":visible")) {
@@ -554,12 +576,11 @@ $(document).click(function(event) {
         }
     }        
 })
-
+//keep
 function SelectLanguage()
 {
     element = document.getElementById("lang")
-    var lang = element.value;
-    mainLanguage.setAttribute("lang", lang)
+    var lang = element.value;    
     var LangHash = language[lang];
     for (var key in LangHash)
     {
@@ -570,30 +591,51 @@ function SelectLanguage()
         else if(key.indexOf("holder-") === 0)
         {
             $("[langkey='" + key+ "']").attr("placeholder",LangHash[key]);
-        }
+        }   
         else if(key.indexOf("html-") === 0)
         {
             $("[langkey='" + key+ "']").html(LangHash[key]);
-        }                     
+        }          
         else{
             $("[langkey='" + key+ "']").text( LangHash[key]);
         }
+    }    
+}
+//add
+function KeywordKeyup(event)
+{
+    var x = event.which || event.keyCode;
+    if (x === 13){
+        generatePassword();
     }
-    
 }
 
-function ChangeLanguage()
+function Popup(element)
 {
-    if ($("#langButton").text() === "English")
+    $(element).animate({top:"-10px"}, "fast")
+    var social = $(element).attr("social");
+    $("#" + social).show("fast");
+    if (social.indexOf("facebook") >= 0)
     {
-        $("#lang").val("vi");
-        mainLanguage.setAttribute("lang", "vi")
+        $(element).css("color", "#3B5998");
     }
-    else
+    if (social.indexOf("twiter") >= 0)
     {
-        $("#lang").val("en");
-        mainLanguage.setAttribute("lang", "en")
+        $(element).css("color", "#55ACEE");
     }
-    console.log("langButton")
-    SelectLanguage();
+    if (social.indexOf("google") >= 0)
+    {
+        $(element).css("color", "#DD4B39");
+    }
+
 }
+function Popdown(element)
+{
+    $(element).animate({top:"0"}, "fast")
+    var social = $(element).attr("social");
+    $("#" + social).hide("fast");
+     $(element).css("color", "#FFFFFF");
+}
+// $( window ).scroll(function() {
+  
+// });

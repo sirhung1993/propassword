@@ -1,0 +1,254 @@
+#settingpannel
+{
+    position: absolute;
+    top:20px;
+    right:5px
+}
+@media screen and (max-width: 480px) 
+{
+    .about-LeftBlankCol
+    {
+        display: none;
+    }
+    .about-CenterCol
+    {
+        width:100%;
+    }
+    .about-Side
+    {
+        display: none;
+        
+    }
+    .about-Center
+    {
+        width: 100%;
+    }
+    .LeftBlankCol
+    {
+        display: none;
+    }
+    .CenterCol
+    {
+        width:100%;
+    }
+    .main-Side
+    {
+        display: none;
+        
+    }
+    .main-Center
+    {
+        width: 100%;
+    }
+    .X-button
+    {
+        width: 100%;
+    }
+    .hide-small
+    {
+        display: none
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width:640px)
+{
+    .about-LeftBlankCol
+    {
+        display: block;
+        width: 5%;
+    }
+    .about-CenterCol
+    {
+        width: 90%;
+    }
+    .about-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .about-Center
+    {
+        width: 90%;
+    }
+    .LeftBlankCol
+    {
+        display: block;
+        width: 5%;
+    }
+    .CenterCol            
+    {
+        width: 90%;
+    }
+    .main-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .main-Center
+    {
+        width: 90%;
+    }      
+    .X-button
+    {
+        width: 100%;
+    }   
+    .hide-small
+    {
+        display: none
+    }
+}
+@media only screen and (min-width: 640px) and (max-width:860px)
+{
+    .about-LeftBlankCol
+    {
+        display: block;
+        width: 10%;
+    }
+    .about-CenterCol
+    {
+        width:80%;
+    }
+    .about-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .about-Center
+    {
+        width: 90%;
+    }
+    .LeftBlankCol
+    {
+        display: block;
+        width: 10%;
+    }
+    .CenterCol
+    {
+        width:80%;
+    }
+    .main-Side
+    {
+        display: block;
+        width: 10%
+    }
+    .main-Center
+    {
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 860px) and (max-width:1020px)
+{
+    .about-LeftBlankCol
+    {
+        display: block;
+        width: 10%;
+    }
+    .about-CenterCol
+    {
+        width:80%;
+    }
+    .about-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .about-Center
+    {
+        width: 90%;
+    }
+    .LeftBlankCol
+    {
+        display: block;
+        width: 15%;
+    }
+    .CenterCol
+    {
+        width:70%;
+    }
+    .main-Side
+    {
+        display: block;
+        width: 10%
+    }
+    .main-Center
+    {
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 1020px) and (max-width:1280px)
+{
+    .about-LeftBlankCol
+    {
+        display: block;
+        width: 10%;
+    }
+    .about-CenterCol
+    {
+        width:80%;
+    }
+    .about-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .about-Center
+    {
+        width: 90%;
+    }
+    .LeftBlankCol
+    {
+        display: block;
+        width: 20%;
+    }
+    .CenterCol
+    {
+        width:60%;
+    }
+    .main-Side
+    {
+        display: block;
+        width: 15%
+    }
+    .main-Center
+    {
+        width: 70%;
+    }
+}
+@media only screen and (min-width:1280px)
+{
+    .about-LeftBlankCol{
+        display: block;
+        width: 10%;
+    }
+    .about-CenterCol
+    {
+        width:80%;
+    }
+    .about-Side
+    {
+        display: block;
+        width: 5%
+    }
+    .about-Center
+    {
+        width: 90%;
+    }
+    .LeftBlankCol
+    {
+        display: block;
+        width: 25%;
+    }
+    .CenterCol
+    {
+        width:50%;
+    }
+    .main-Side
+    {
+        display: block;
+        width: 15%
+    }
+    .main-Center
+    {
+        width: 70%;
+    }
+}

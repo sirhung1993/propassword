@@ -1,243 +1,194 @@
-<body class="w3-black">
-    <div class="w3-row w3-black" id="BackGround"
-        style="position:fixed;z-index:-2;">
-    </div>
-    <div>
-        <img src="views/images/showcontent.png" alt="show the password"  style="position:fixed;z-index:-1;opacity:0.5;height:100%;width:70%;left:15%" >
-    
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>    
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    
-    <div class="w3-container w3-row">
-        <div class="w3-col  m2 l3 w3-hide-small" ><p></p>
+<div id="main" class="w3-row">        
+        <div class="w3-col LeftBlankCol ">
+            <p> </p>
         </div>
-        <div class="w3-round-medium w3-transparent w3-half w3-center w3-black w3-col m8 l6" style="opacity:0.9;box-shadow:1px 1px 8px #80FFFF ,-1px -1px 8px #80FFFF" id="MainBlock">
-            <br>
-            <h1 langkey="GeneratePassword">GENERATE PASSWORD</h1>
-            <div class="w3-row" >
+        <div class="w3-col CenterCol">
+            
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="w3-round-medium w3-transparent w3-center w3-black w3-col" style="opacity:0.9;box-shadow:1px 1px 8px #80FFFF,-1px -1px 8px #80FFFF" >
+                
+                <div style="position: relative;">
+                    <div class="w3-topnav w3-black w3-col w3-left" style=" opacity:0.9;box-shadow:1px 1px 2px #80FFFF ,-1px -1px 2px #80FFFF; padding: 0">
 
-                <div class="w3-col  m1 l2 w3-hide-small" ><p></p>
+                        <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Home" style="margin: 3px 1px">Home</div>
+                        <a href="https://www.easykeytopass.com/about">
+                            <div  class="w3-btn w3-hover-white w3-hover-text-black" langkey="About" style="margin: 3px 1px">About</div>
+                        </a>
+
+<!--                         <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Usage" style="margin: 3px 1px">Usage</div> 
+
+                        <div onclick="BackToHome()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="Document" style="margin: 3px 1px">Document</div> -->
+
+                        <div onclick="AddNewBlockOpen()" class="w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock" style="margin: 3px 1px">Add New Block</div>       
+                    </div>
                 </div>
-                <div class="w3-row w3-col w3-content m10 l8" style="position:relative;" id="BlockContain">                    
-                    <input class="w3-input w3 -border w3-left-align w3-left w3-transparent w3-text-white" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock"
-                    onkeyup="filterFunction(event)" onclick="OpenBlocFillter(event)" langkey="holder-BlockName"/>
+                <div class="w3-col main-Side " >
+                    <p> </p>
+                </div>
+                <div class="w3-col main-Center w3-black" style="display:none" id="NewBlock">
                     
-                    <div class="w3-col w3-left w3-card-4" id="BlockFilter" style="position:absolute;z-index:1;opacity:0.9;display:none;overflow-y: scroll;top:52px;max-height:300px">
-                        <div class="w3-btn w3-left-align w3-hover-white w3-hover-text-black" onclick="selectABlockname(this)" onmousemove="ReForcusthis(this)" style="width:100%">defaultblock</div>
-                                              
-                        </div>
-                </div> 
-                <div class="w3-col m1 l2 w3-hide-small"><p></p>
-                </div>
-            </div><div class="w3-row">
-                <div class="w3-col w3-hide-small m1 l2" >
-                    <p></p>
-                </div>
-                <hr class="w3-col s12 m10 l8">
-            </div>
-            <div id ="keySector"> 
-                <div >
+                    <div>
+                        <h4>BLOCK NAME</h4>
+                        <input class="w3-input w3-border w3-text w3-left-align w3-left w3-black w3-border-yellow" name="newBlockName" placeholder="block name" type="text" id="NewBlockName" langkey="holder-BlockName"/>                        
+                    </div>
                     <br/>
-                    <div class="w3-row ">
-                        <div class="w3-col w3-hide-small m1 l1" >
-                            <p></p>
-                        </div>
-                        <div class="w3-left w3-large" ><span langkey="keyword">KEYWORD</span>:</div>
-                    </div>
-                    <div class="w3-row">
-
-                        <div class="w3-col w3-hide-small m1 l1" style="position:relative"><p></p>
-                        </div>
-                        <div class="w3-row w3-col m10 l10" style="position:relative;">
-                            
-                            <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="keyword" placeholder="a familiar keyword" type="password" style="padding-right: 50px" langkey="holder-answer"/>
-                            <div class="w3-row btnShowHidePassword" style="position:absolute;top:0;right:0%;height:100%">
-                                
-                                    <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
-                                
-                            </div>
-                        </div>
-                        <div class="w3-col w3-hide-small m1 l1" style="position:relative"><p></p>
-                        </div>
-                    </div>                
-                </div>
-            </div>            
-            <div class="w3-hide-small w3-hide-medium">
-                <br/>
-            </div>
-            <div class="w3-row " id="AddKeyword">
-                <div class="w3-col w3-hide-small m1 l1">
                     <p></p>
-                </div>
-                <div class="w3-col w3-row l5 w3-content">
-                    <div class ="w3-hide-small w3-hide-large w3-col m1"><p></p>
-                    </div>
-                    <input class="w3-col w3-btn w3-hover-gray w3-text-white w3-black w3-border w3-border-green w3-left w3-row w3-col m10"
-                    style="height:100%;" type="button" value="Add new KEYWORD" onclick="AddnewKeyword()" langkey="val-AddNewKeyword"/>        
-
-                </div>
-                <div class="w3-col w3-row l5 w3-content">
-                    <div class ="w3-hide-small w3-hide-large w3-col m1 w3-right"><p></p>
-                    </div>
-                    <input class="w3-btn w3-hover-gray w3-text-white  w3-border w3-border-green w3-black w3-row w3-col m10 w3-right"
-                    style="height:100%;" type="button" value="Remove Last KEYWORD" langkey="val-RemoveLastKeyword" onclick="RemoveLastKeyword()"/>
-                  
-                </div>
-                <div class="w3-col w3-hide-medium m1 l1">
-                    <p></p>
-                </div>             
-            </div> 
-            <div class="w3-hide-small w3-hide-medium">
-                <br/>
-            </div>
-            <div class="w3-row ">                
-                <div class="w3-col w3-hide-small m1 l3" >
-                    <p></p>
-                </div>
-                
-                <input class="w3-btn w3-hover-gray w3-text-white  w3-border w3-border-yellow w3-row w3-col w3-content m10 l6 w3-black"
-                    style="height:100%;" type="button"  langkey="val-GenPassword" value="Generate Password" onclick="generatePassword()" />
-                
-                <div id="hiddenpassbox" style="display:none" >
-                </div>
-                              
-                <div class="w3-col w3-hide-small m1 l3">
-                    <p></p>
-                </div>
-            </div>  
-            <br/>
-            <div class="w3-col w3-row w3-block ">
-                <div class="w3-col w3-hide-small" style="width:5%">
-                    <p></p>
-                </div>
-                <span langkey="NoOfChar">Number of characters:</span>
-                <input type="number" class="w3-cell w3-border  w3-border-green w3-center" id="quantity" min="6" max="32" step="1" value="32" style="width:50px;height:40px;background:black;color:white;border:none;" onkeyup="slicePassword()"/>
-                <p id="InvalidNoOfChar" class="w3-text-red w3-tiny " style="display:none" langkey="InvalidNoOfCharWarning">Invalid Number of characters. Number of characters must be between 6 and 32</p>
-            </div>         
-            <br/>
-            
-            <div>
-                <div class="w3-row">
-                    <div class="w3-col w3-hide-small m1 l1" >
-                        <p></p>
-                    </div>
-                    <div class="w3-col w3-right w3-hide-small m1 l1">
-                        <p></p>
-                    </div>
-                    <div class="w3-left m10 l10 w3-row w3-col">
-                        <div class="w3-right w3-col material-icons" style="font-size: 20px;cursor:pointer;display: none; width:25px" onmousedown="CopyKeyDown()" onmouseup="CopyKeyUp()" id="ContentCopy" >content_copy</div>                        
-                        <div class="w3-col w3-left w3-left-align w3-large w3-rest m10 l11 s9" langkey="YourPassword">Your Password:</div>
-                    </div>
-                </div>
-                <div class="w3-row">
-
-                    <div class="w3-col w3-hide-small m1 l1" ><p></p>
-                    </div>
-                    <div class="w3-row w3-col m10 l10" style="position:relative;">
-                        
-                        <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white " placeholder="Your Password displayed here" style="padding-right: 50px" id="encryptedPassword" readonly="true" type="password" langkey="holder-DisplayPassword"/>
-                        <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%">
-                            <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
-                        </div>
-                    </div>                    
-                    <div class="w3-col w3-hide-small m1 l1" ><p></p>
-                    </div>
-                </div>
-            
-                <br>
-            </div>
-        </div>
-
-        <div class="w3-round-medium w3-transparent w3-half w3-center w3-black w3-col m8 l6" style="opacity:0.9;display:none;box-shadow:1px 1px 8px #80FFFF,-1px -1px 8px #80FFFF" id="NewBlock">
-            <div class="w3-row">
-                <h1 langkey="BlockName">BLOCK NAME</h1>
-                <div class="w3-row" >
-                    <div class="w3-col  w3-hide-small m2 l3" >
-                        <p></p>
-                    </div>
-                    <div class="w3-row w3-col m8 l6" style="position:relative;" >
-                        
-                        <input class="w3-input w3-border w3-text w3-left-align w3-left w3-black" name="newBlockName" placeholder="block name" type="text" id="BlockName" langkey="holder-BlockName"/>
-                        
-                    </div>
-                    <div class="w3-col  w3-hide-small m2 l3" >
-                        <p></p>
-                    </div>
-                </div>  
-                <br>
-                <div id = "HintsBlock">
-                    <div class="HintBlock ">
-                        <br/>
-                        <div class="w3-row">
-                            <div class="w3-col  w3-hide-small m1 l2" >
-                                <p></p>
+                    <div id = "HintsBlock">
+                        <div>
+                            <div class="w3-col"> <p></p>
                             </div>
                             <div class="w3-left w3-large" ><span langkey="Hint">Hint</span> &#35;1:</div>
-                        </div>
-                        <div class="w3-row">
-                            <div class="w3-col  w3-hide-small m1 l2" >
-                                <p></p>
-                            </div>
-                            <div class="w3-row w3-col m10 l8" style="position:relative;">
+                            <div class="w3-row w3-col" style="position:relative;">
                                 <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="hint" placeholder="The hint for your keyword" type="text" style="padding-right:50px" langkey="holder-hint"/>
                                 <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%">
                                     <input class="w3-btn w3-hover-gray w3-border w3-text-white "
                                         style="height:100%; " type="button" value="&minus;" onclick="DeleteThisHint(this)"/>
-                                </div>
-                            </div> 
-                            <div class="w3-col  w3-hide-small m1 l2" >
-                                <p></p>
-                            </div>               
+                                </div> 
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <br>
-                <div class="w3-row">
-                    <div class="w3-col  w3-hide-small m1 l2" >
+                    </div>   
+                    <div>
                         <p></p>
+                        <br/>
                     </div>
-                                      
-                    <div class="w3-col  w3-hide-small m1 l2 w3-right">
-                            <p></p>
-                    </div>
-                    <div class="w3-col w3-row m10 l8">
-                        <div class="w3-btn w3-hover-gray w3-text-white w3-left w3-border w3-border-green m12 l5 w3-col" onclick="AddNewHintBlock()" langkey="AddNewHint">Add New Hint
+                    <div class="w3-col w3-row">
+                        <br/>
+                        <div class="w3-btn w3-hover-gray w3-text-white w3-left w3-border w3-border-green X-button" onclick="AddNewHintBlock()" langkey="AddNewHint">Add New Hint
                         </div>
-                        <div class="w3-col w3-hide-small w3-hide-medium" style="width:5px">
-                            <p></p>
-                        </div>
-                        <div class="w3-btn w3-hover-gray w3-text-white w3-right w3-border w3-border-green m12 l6 w3-col" onclick="SubmitBlockName()" langkey="SubmitNewBlock">Submit Block
+                        <div class="w3-btn w3-hover-gray w3-text-white w3-right w3-border w3-border-green X-button" onclick="SubmitBlockName()" langkey="SubmitNewBlock">Submit Block
                         </div>                        
+                    </div> 
+                    <div class="w3-col">
+                        <p></p>
                     </div>  
+                    <div class="w3-col">
+                        <p></p>
+                    </div> 
+                </div>
+            
+                <div class="w3-col main-Center w3-black" id="MainBlock">
+                    
+                    <h1 langkey="GeneratePassword">GENERATE PASSWORD</h1>
+                    <br/>
+                    <div style="position:relative">
+                        <div class="w3-left w3-left-align" langkey="blockname">Block name:
+                        </div>
+                        
+                        <input class="w3-input w3-border w3-left-align w3-left w3-transparent w3-text-white w3-border-yellow" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock" onkeyup="filterFunction(event)" langkey="holder-BlockName"/>
+                        <div class="w3-col w3-left w3-card-4" id="BlockFilter" style="position:absolute;z-index:1;opacity:0.9;display:none;overflow-y: scroll;top:52px;max-height:300px">
+                            <div class="w3-btn w3-left-align w3-hover-white w3-hover-text-black" onclick="selectABlockname(this)" onmousemove="ReForcusthis(this)" style="width:100%">defaultblock</div>       
+                 
+                        </div>
+                    </div>
+                    <br/>
+                    <div id ="keySector"> 
+                        <div>
+                            <div class="w3-col">
+                                <p></p> 
+                            </div>
+                            <div class="w3-left w3-large" ><span langkey="keyword">KEYWORD</span>:</div>
+                            <div class="w3-row w3-col" style="position:relative;">                            
+                                <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="keyword" placeholder="a familiar keyword" type="password" style="padding-right: 50px" langkey="holder-answer" onkeyup="KeywordKeyup(event)"/>
+                                <div class="w3-row btnShowHidePassword" style="position:absolute;top:0;right:0%;height:100%">
+                                    <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w3-col w3-row" id="AddKeyword" >
+                        <br/>
+                        <div class="w3-btn w3-hover-gray w3-text-white w3-left w3-border w3-border-green X-button" onclick="AddnewKeyword()" langkey="AddNewKeyword">Add New KEYWORD
+                        </div>
+                        <div class="w3-btn w3-hover-gray w3-text-white w3-right w3-border w3-border-green X-button" onclick="RemoveLastKeyword()" langkey="RemoveLastKeyword">Remove last KEYWORD
+                        </div>
+                    <div class="w3-col w3-row hide-small">  
+                        <p></p>    
+                    </div> 
+                    <div class="w3-btn w3-hover-gray w3-text-white w3-center w3-border w3-border-blue X-button" onclick="generatePassword()" langkey="GenPassword">Generate PASSWORD
+                    </div>                                               
+                    </div>              
+
+                    <br />
+                    <div class="w3-col w3-row hide-small">  
+                        <p></p>  
+                        <span langkey="NoOfChar">Number of characters:</span>
+                        <input type="number" class="w3-cell w3-border  w3-border-green w3-center" id="quantity" min="6" max="32" step="1" value="32" style="width:50px;height:40px;background:black;color:white;border:none;" onkeyup="slicePassword()"/>
+                        <input type="hidden" id="hiddenpassbox"/>
+                        <p id="InvalidNoOfChar" class="w3-text-red w3-tiny " style="display:none" langkey="InvalidNoOfCharWarning">Invalid Number of characters. Number of characters must be between 6 and 32</p>     
+                    </div> 
+                    <div>
+                        <div class="w3-col">
+                            <p></p>
+                        </div>
+                        <div class="w3-col w3-left w3-left-align w3-large w3-threequarter" langkey="YourPassword">Your Password:</div>
+                          
+                        
+                        <div class="w3-row w3-col" style="position:relative;">
+                        
+                            <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white " placeholder="Your Password displayed here" style="padding-right: 50px" id="encryptedPassword" readonly="true" type="password" langkey="holder-DisplayPassword"/>
+                            <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%">
+                                <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
+                                <div class="w3-col w3-right w3-right-align material-icons" style="font-size: 25px;cursor:pointer;display: none; width:30px;top:5px; position:relative;right:5px" onmousedown="CopyKeyDown()" onmouseup="CopyKeyUp()" id="ContentCopy" >content_copy</div> 
+
+                        </div>
+                    </div>   
+                    
+                    <div class="w3-col">
+                        <p></p>
+                    </div>  
+                    <div class="w3-col">
+                        <p></p>
+                    </div> 
+                    </div>
+
+                 </div>
+                <div class="w3-col main-Side ">
+                    <p> </p>
                 </div>
                 
-                <br>
             </div>
+          
+        </div>
+        <div class="w3-col LeftBlankCol">
+            <p> </p>
         </div>
         
-        <div class="w3-modal" style="opacity:0.9;display:none;" id="modal">
-            <div class="w3-modal-content w3-center w3-black w3-animate-zoom " style="box-shadow:1px 1px 8px #80FFFF,-1px -1px 8px #80FFFF;top:200px">
-                <div class="material-icons w3-spin" style="font-size:120px;height:120px">autorenew</div>
-                <div class="w3-large" id="waiting" langkey="waiting">Waiting</div>
-                <div class="w3-center w3-green w3-large w3-col" id="AddNewlogInfo" style="width:100%;display:none" langkey="SubmitNewBlockSuccess">Submit New Block Successfull!
-                </div>
-            </div>
-            <br/>
-        </div>
     </div>
- 
     <br/>
     <br/>
-    <br/>
-    <br/>
-
-
-</body>
+    <div id="social" class="w3-panel w3-center">
+        <a href="http://www.facebook.com/sharer.php?u=https://www.easykeytopass.com/" target="_blank">
+            <i class="fa fa-facebook-official" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="facebook"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Visiting%20https%3A%2F%2Fwww.easykeytopass.com" target="_blank">
+            <i class="fa fa-twitter-square" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="twiter"></i>
+        </a>
+        <a href="https://plus.google.com/share?url=https://www.easykeytopass.com" target= "_blank">
+        <i class="fa fa-google-plus-square " style="font-size:48px; color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="google"></i>
+        </a>
+        <a href="https://www.facebook.com/easykeytopass" target="_blank">
+            <i class="fa fa-thumbs-o-up" style="font-size:48px;color:white;cursor: pointer;position:relative;margin:0 5px" onmouseover="Popup(this)" onmouseout="Popdown(this)" social="likefacebook"></i>
+        </a>
+    </div>
+    
+    <div id="social" class="w3-panel w3-center">
+        
+        <i class="w3-text-gray w3-small" style="display:none" id="twiter">Share on twiter</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="google">Share on Google plus</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="facebook">Share on facebook</i>
+        <i class="w3-text-gray w3-small" style="display:none" id="likefacebook">Like us on facebook</i>
+    </div>
+    <div class="w3-modal" style="opacity:0.9;display:none;" id="modal">
+        <div class="w3-modal-content w3-center w3-black w3-animate-zoom " style="box-shadow:1px 1px 8px #80FFFF,-1px -1px 8px #80FFFF;top:200px">
+            <div class="material-icons w3-spin" style="font-size:120px;height:120px">autorenew</div>
+            <div class="w3-large" id="waiting" langkey="waiting">Waiting</div>
+            <div class="w3-center w3-green w3-large w3-col" id="AddNewlogInfo" style="width:100%;display:none" langkey="SubmitNewBlockSuccess">Submit New Block Successfull!
+            </div>
+        </div>
+        <br/>
+    </div>

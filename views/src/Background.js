@@ -1,4 +1,5 @@
 var AllBlock;
+var mainHTML = document.getElementsByTagName("html")[0]
 
 function CreateCollunm(XLeft)
 {
@@ -206,18 +207,20 @@ $(document).ready(function(){
     if (lang.indexOf("en") >= 0)
     {
         lang = "en"
+        mainHTML.setAttribute("lang", lang)
     }
     else if (lang.indexOf("vi") >= 0)
     {
         lang = "vi"
+        mainHTML.setAttribute("lang",lang)
     }
     $("#lang").val(lang)
     SelectLanguage()
     // $("btnShowHidePassword").Edge
-    // while( Xleft < MaxWidth + 5){
-    //     Xleft = CreateCollunm(Xleft);
-    //     // i++
-    // }
+    while( Xleft < MaxWidth + 5){
+        Xleft = CreateCollunm(Xleft);
+        // i++
+    }
     //SettingOpen()
     
     
@@ -225,6 +228,7 @@ $(document).ready(function(){
        
         if(data.OK) {
             var allBlockNames = data.OK.msg
+            console.log(allBlockNames)
             var blockFilter = document.getElementById('BlockFilter')
             var firstBlockName = blockFilter.firstElementChild
             for (var i in allBlockNames) {
@@ -580,7 +584,8 @@ $(document).click(function(event) {
 function SelectLanguage()
 {
     element = document.getElementById("lang")
-    var lang = element.value;    
+    var lang = element.value;
+    mainHTML.setAttribute("lang", lang)    
     var LangHash = language[lang];
     for (var key in LangHash)
     {

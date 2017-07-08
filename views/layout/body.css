@@ -4,6 +4,9 @@
     top:20px;
     right:5px
 }
+a:link, a:visited {
+        text-decoration: none;
+        }
 @media screen and (max-width: 480px) 
 {
     .about-LeftBlankCol
@@ -16,8 +19,7 @@
     }
     .about-Side
     {
-        display: none;
-        
+        display: none;        
     }
     .about-Center
     {

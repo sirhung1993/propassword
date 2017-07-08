@@ -599,6 +599,7 @@ function SelectLanguage()
         }   
         else if(key.indexOf("html-") === 0)
         {
+           
             $("[langkey='" + key+ "']").html(LangHash[key]);
         }          
         else{

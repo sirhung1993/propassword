@@ -575,8 +575,13 @@ function CopyKeyUp()
 //keep
 $(document).click(function(event) { 
     if(!$(event.target).closest('#BlockFilter').length) {
-        if($('#BlockFilter').is(":visible")) {
-            $('#BlockFilter').hide();
+        if($(event.target).attr("id") === "ShowFilterBtn"){
+            $('#BlockFilter').show();
+        }
+        else{
+            if($('#BlockFilter').is(":visible")) {
+                $('#BlockFilter').hide();
+            }
         }
     }        
 })

@@ -77,8 +77,11 @@
                     <div style="position:relative">
                         <div class="w3-left w3-left-align" langkey="blockname">Block name:
                         </div>
-                        
-                        <input class="w3-input w3-border w3-left-align w3-left w3-transparent w3-text-white w3-border-yellow" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock" onkeyup="filterFunction(event)" langkey="holder-BlockName"/>
+                        <div class=" w3-border w3-left-align w3-left" style="width:100%;position:relative">
+                            <input class="w3-input w3-transparent w3-text-white w3-border-yellow" name="blockName" placeholder="Block Name" type="text" id="BlockName" value="defaultblock" onkeyup="filterFunction(event)" langkey="holder-BlockName" style="padding-right: 30px"/>
+                            <div style="position: absolute;right:0;width:30px;top:0px;z-index:3;height: 99%;padding:4px 0 0 0;font-size:16px;background:transparent" class="w3-hover-border-aqua w3-hover-gray w3-center w3-btn" id="ShowFilterBtn">&#x25BD;
+                            </div> 
+                        </div> 
                         <div class="w3-col w3-left w3-card-4" id="BlockFilter" style="position:absolute;z-index:1;opacity:0.9;display:none;overflow-y: scroll;top:52px;max-height:300px">
                             <div class="w3-btn w3-left-align w3-hover-white w3-hover-text-black" onclick="selectABlockname(this)" onmousemove="ReForcusthis(this)" style="width:100%">defaultblock</div>       
                  

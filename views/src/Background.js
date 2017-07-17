@@ -472,7 +472,7 @@ function generatePassword() {
     $("input[name='keyword']").each(function() {
         keyword.push($(this).val());
     })
-    $.post('https://www.easykeytopass.com/passgen', {
+    $.post('passgen', {
         blockname: blockname,
         keyword: keyword
     }, function(data, status) {

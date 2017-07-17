@@ -91,7 +91,7 @@
                             <div class="w3-row w3-col" style="position:relative;">                            
                                 <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white" name="keyword" placeholder="a familiar keyword" type="password" style="padding-right: 50px" langkey="holder-answer" onkeyup="KeywordKeyup(event)"/>
                                 <div class="w3-row btnShowHidePassword" style="position:absolute;top:0;right:0%;height:100%">
-                                    <img src="images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
+                                    <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
                                 </div>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         
                             <input class="w3-input w3-border w3-text w3-left-align w3-left w3-transparent w3-text-white " placeholder="Your Password displayed here" style="padding-right: 50px" id="encryptedPassword" readonly="true" type="password" langkey="holder-DisplayPassword"/>
                             <div class="w3-row" style="position:absolute;top:0;right:0%;height:100%">
-                                <img src="images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
+                                <img src="views/images/showcontent.png" alt="show the password" style="height:100%;width:50px" class="w3-hover-opacity" onclick="showContent(this)">
                                 <div class="w3-col w3-right w3-right-align material-icons" style="font-size: 25px;cursor:pointer;display: none; width:30px;top:5px; position:relative;right:5px" onmousedown="CopyKeyDown()" onmouseup="CopyKeyUp()" id="ContentCopy" >content_copy</div> 
 
                         </div>
@@ -252,7 +252,7 @@
             <br/>
             <div style="text-align: center" >                     
                 <h3 style="padding:5px 10px;position: relative;background-color: #e2c46a;text-align: center;display: inline-block "
-                    ><b langkey="PasswordGenerator">TÍNH NĂNG</b></h3>
+                    ><b langkey="PasswordGenerator">BẮT ĐẦU</b></h3>
                 <div style="padding:5px 10px;margin-top: -55px"><hr/></div>
             </div>
             <br/>
@@ -263,11 +263,11 @@
                         5px 10px;margin-top: -25px;text-align: center;
                     margin-left:20px"><b langkey="SimpleHead">Tạo Mật Khẩu Đơn Giản</b></h4>
                     
-                    <div style="margin: 10px 10px 0 30px">
-                        <b>Password Generator</b> được tạo ra với mục đích mã hoá mật khẩu của bạn bằng những từ khoá quen thuộc với bạn
+                    <div style="margin: 10px 10px 0 30px" langkey="html-getting-started-1">
+                        <b>Easykeytopass</b> được tạo ra với mục đích mã hoá mật khẩu của bạn bằng những từ khoá quen thuộc nhất với bạn
                         <br/>
-                        Với thiết kế trang chủ đơn giản,bạn có thể tạo ra một mật khẩu đủ phức tạp với độ bảo mật cao mà lại vô cùng dễ nhớ.<br/>
-                        Để bắt đầu, hãy tạo một mật khẩu đơn giản nhất với những thiết lập mặc định<br/>
+                        Với thiết kế trang chủ đơn giản,bạn có thể tạo ra một mật khẩu đủ phức tạp với độ bảo mật cao mà bạn luôn luôn có thể lấy được khi cần dùng <br/>
+                         Để bắt đầu, hãy tạo một mật khẩu nhanh chóng nhất với những thiết lập mặc định<br/>
                         <ul>
                             <li>Nhập một từ khoá vào ô "Từ khoá".<br/>( Bạn có thể nhập số 1, họ của bạn, tên chú cún của em gái hay ngày sinh nhật của con gái bạn, nhưng đừng để trống)</li>
                             <li>Bấm vào nút nhất &nbsp;
@@ -276,7 +276,7 @@
                             Nhấp vào nút nhấn &nbsp;<span class=" material-icons w3-btn w3-black">content_copy</span> &nbsp;để copy mật khẩu vào clipboard và dán chúng vào paswordbox trên trang web hay ứng dụng của bạn.
                             </li>
                         </ul>
-                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-blue w3-panel w3-round-small" style="width:100%">
+                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-blue w3-panel w3-round-small" style="width:100%" langkey="html-getting-started-2">
                             <span class="w3-large">&#x2A;</span> &nbsp;
                             Chúng tôi muốn giữ đúng tính chất của mật khẩu vì thế các từ khoá phân biệt chữ hoa chữ thường, có thể sử dụng chữ số và các kí hiệu đặc biệt. <br/>
                             <span class="w3-large">&#x2A;</span> &nbsp;
@@ -291,7 +291,7 @@
                 <div  class="w3-col l6 m12 s12 w3-center w3-right"> 
                     <br/>
                     <br/>
-                    <img src="images/Page.png" class="w3-center" style="max-width: 90%; " />
+                    <img src="views/images/Page.png" class="w3-center" style="max-width: 90%; " />
                     <br/>
                 </div>
             </div>
@@ -305,13 +305,13 @@
                         5px 10px;margin-top: -25px;text-align: center;
                     margin-left:20px"><b langkey="HintsHead">Tạo Mật Khẩu Từ Các Gợi Ý</b></h4>
                     
-                    <div style="margin: 10px 10px 0 30px">
-                        Mặc định, <b>Password Generator</b> sẽ sử dụng defaultblock để tạo mật khẩu và sử dụng các khoá ngẫu nhiên của bạn.<br/>
+                    <div style="margin: 10px 10px 0 30px" langkey="html-getting-started-3">
+                        Mặc định, <b>Easykeytopass</b> sẽ sử dụng defaultblock để tạo mật khẩu và sử dụng các khoá ngẫu nhiên của bạn.<br/>
                         Điều này sẽ rất phiền phức nếu như bạn không nhớ được từ khoá bạn đã điền là gì.<br/>
                         Các khối được định nghĩa sẵn chứa một chuỗi các gợi ý dến các từ khoá của bạn. Thường là các gợi ý liên quan đến những thông tin, sở thích cá nhân. Bạn có thể thành thật trả lời hoặc không. Nhưng hãy nhớ câu trả lời đó.<br/>
                         Bạn có thể nhập tên các khối vào ô trống <input placeholder="Tên Khối" class="w3-black"/> và bấm phím "Enter" hoặc chọn trong danh sách được số xuống bên dưới. Danh sách này sẽ được lọc theo những gì bạn đã nhập vào ô <input placeholder="Tên Khối" class="w3-black"/>
                         Các gợi ý trong danh khối sẽ được hiện ra thay thế cho các từ khoá. Diền câu trả lời của bạn và chọn <span class="w3-btn w3-black w3-hover-white w3-hover-text-black w3-text-white">Tạo mật khẩu</span> như hướng dẫn ở trên.
-                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-lime w3-panel w3-round-small" style="width:100%">
+                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-lime w3-panel w3-round-small" style="width:100%" langkey="html-getting-started-4">
                             <span class="w3-large">&#x2A;</span> &nbsp;
                             Các gợi ý luôn hiện thị đúng thứ tự trong mỗi lần tạo mật khẩu.Vì thế việc của bạn là hãy trả lời cho thật đúng với những lần trước đó<br/>
                             <span class="w3-large">&#x2A;</span> &nbsp;
@@ -326,7 +326,7 @@
                 <div class="w3-col l6 m12 s12 w3-center"> 
                     <br/>
                     <br/>
-                    <img src="images/ChooseBlockName.png" class="w3-center" style="max-width: 90%;" />
+                    <img src="views/images/ChooseBlockName.png" class="w3-center" style="max-width: 90%;" />
                     <br/>
                 </div>
                 <br/>
@@ -340,9 +340,9 @@
                     
                     <h4 style="display:inline-block;padding:
                         5px 10px;margin-top: -25px;text-align: center;
-                    margin-left:20px"><b langkey="SimpleHead">Tạo Khối Mới</b></h4>
+                    margin-left:20px"><b langkey="NewSetOfHints">Tạo Khối Mới</b></h4>
                     
-                    <div style="margin: 10px 10px 0 30px">
+                    <div style="margin: 10px 10px 0 30px" langkey="html-getting-started-5">
                         Nếu bạn thấy các khối gợi ý được dựng sẵn khó nhớ cả về tên khối lẫn các chuỗi gợi ý, thì tại sao bạn không tạo một khối mới với chuỗi gợi ý của bạn.
                         <ul>
                             <li>Chọn <div  class="w3-btn w3-hover-white w3-hover-text-black" langkey="AddNewBlock" style="margin:2px">Thêm Khối Mới</div> &nbsp; Giao diện trang web sẽ thay đôei để bạn thêm một khối theo ý thích của riêng bạn.</li>
@@ -350,11 +350,11 @@
                             <li>Chọn <div  class="w3-btn w3-hover-white w3-hover-text-black w3-border" style="margin:2px">-</div>&nbsp; phía sau mỗi gợi ý để xoá bỏ gợi ý đó trong chuỗi câu hỏi của bạn.</li>
                             <li>Chọn <div  class="w3-btn w3-hover-white w3-hover-text-black w3-border" style="margin:2px">Lưu Khối</div>&nbsp; để lưu chuỗi câu hỏi của bạn lên hệ thống của chúng tôi.</li>
                         </ul>
-                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-teal w3-panel w3-round-small" style="width:100%">
+                        <div class=" w3-pale-blue w3-leftbar w3-card-4 w3-border-teal w3-panel w3-round-small" style="width:100%" langkey="html-getting-started-6">
                             <span class="w3-large">&#x2A;</span> &nbsp;
                             Tên khối là duy nhất nên bạn không thể lưu khối nếu trùng tên với một khối có sẵn trên hệ thống<br/>
                             <span class="w3-large">&#x2A;</span> &nbsp;
-                            Vì lý do tà chính nên dung lượng lưu trữ có hạn. Vì thế chúng tôi phải xoá bỏ những khối đã lâu không được sử dụng. &nbsp;<br/>
+                            Vì lý do tài chính nên dung lượng lưu trữ có hạn. Vì thế chúng tôi phải xoá bỏ những khối đã lâu không được sử dụng. &nbsp;<br/>
                             <br/>
                         </div>
                     </div>
@@ -362,7 +362,7 @@
                 <div  class="w3-col m12 s12 l6 w3-center"> 
                     <br/>
                     <br/>
-                    <img src="images/NewBlock.png" class="w3-center" style="max-width: 90%; " />
+                    <img src="views/images/NewBlock.png" class="w3-center" style="max-width: 90%; " />
                     <br/>
                 </div>
             </div>
@@ -388,27 +388,27 @@
             
             <div style="text-align: center;" >                     
                 <h3 style="padding:5px 10px;position: relative;text-align: center;display: inline-block;background-color: #669999 "
-                    ><b langkey="PasswordGenerator">CÂU HỎI THƯỜNG GẶP</b></h3>
+                    ><b langkey="faq">CÂU HỎI THƯỜNG GẶP</b></h3>
                 <div style="padding:5px 10px;margin-top: -55px"><hr/></div>
             </div>
             
             
             <br/>
             <div style="margin-left:50px;margin-right:50px;">
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">1. Mục đích của trang web này là gì?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>            
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px"  onclick="$(this).next().toggle(300)">2. Mật khẩu của tôi có thể bị trùng với người khác không?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">3. Nếu ai đó biết được câu trả lời của tôi trong chuỗi gợi ý thì họ có thể lấy được mật khẩu của tôi không?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">4. Khi khối gợi ý của tôi bị xoá, tôi phải làm gì?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">5. Chuyện gì xảy ra nếu tôi không nhớ đã dùng khối nào để tạo mật khẩu?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">6. Chuyện gì xảy ra nếu tôi quên câu trả lời?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div>
-                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)">7. Trang web có thu thập  mật khẩu của tôi cũng như thông tin cá nhân qua các câu hỏi không?</div>
-                <div class="w3-left-align" style="display:none;margin: 5px">Answer by Hung</div> 
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-1">1. Mục đích của trang web này là gì?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-1-ans"> Easykeytopass giúp bạn hệ thống hóa lại các mật khẩu, được dùng để đăng nhập các ứng dụng hoặc trang web. Tránh việc dùng một mật khẩu cho nhiều ứng dụng. Đồng thời đảm bảo mật khẩu không bị kẻ xấu hack được bằng cách dò mật khẩu thông dụng. </div>            
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px"  onclick="$(this).next().toggle(300)" langkey="faq-2">2. Mật khẩu của tôi có thể bị trùng với người khác không?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-2-ans">Mật khẩu vẫn có thể bị trùng với điều kiện dùng chung một Tên Khối và các Từ Khóa giống hệt nhau và cùng thứ tự, từ trên xuống dưới. Tuy nhiên, mật khẩu có trùng lặp thì cũng không ai biết rằng mật khẩu của mình bị trùng. Không có thông tin nào để tham chiếu giữa các người dùng với nhau.</div>
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-3">3. Nếu ai đó biết được câu trả lời của tôi trong chuỗi gợi ý thì họ có thể lấy được mật khẩu của tôi không?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-3-ans">Nếu bạn để lộ Tên Khối, nội dung Từ Khóa và thứ tự của Từ Khóa, thì mật khẩu của bạn có khả năng bị lộ rất cao. Nhưng với điều kiện kẻ xấu biết bạn dùng mật khẩu cho ứng dụng nào. Thêm vào đó, nếu bạn thêm một chuỗi ký tự bất kỳ vào mật khẩu được tạo ra bởi Easykeytopass, mà chỉ có một mình bạn biết chuỗi đó, thì rất khó để tìm ra mật khẩu kể cả khi bị lộ hết thông tin trên Easykeytopass. Ví dụ: 593C9b4A9390551d53E5cAcF28eBd638 + chi_co_troi_moi_biet_ban_dien_cai_gi_vao_day.</div>
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-4">4. Khi khối gợi ý của tôi bị xoá, tôi phải làm gì?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-4-ans">Bạn có thể dùng defaultblock - mặc định, thêm bớt số từ khóa sao cho khớp với số lượng bạn đã dùng ở gợi ý bị xóa. Sau đó đổi Tên Khối thành Tên Khối bị mất của bạn. Cuối cùng, điền Từ Khóa của bạn vào các ô KEYWORD sao cho đúng thứ tự như ta làm trước kia với Tên Khối cũ. Chỉ cần nhớ Tên Khối, Từ Khóa và thứ tự Từ Khóa. Bạn có thể tạo ra tất cả các mật khẩu từ các Khối khác.</div>
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-5">5. Chuyện gì xảy ra nếu tôi không nhớ đã dùng khối nào để tạo mật khẩu?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-5-ans">Bạn có thể dò từng khối trong gợi ý của Easykeytopass, miễn sao bạn nhớ được Từ Khóa và thứ tự của chúng. Cách thứ hai, bạn dùng tính năng Quên mật khẩu của ứng dụng bạn định dùng. Thay đổi lại với mật khẩu mới tạo ra của bạn - nhưng phải nhớ 3 thứ là Tên Khối, Từ Khóa và thứ tự của Từ Khóa.</div>
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-6">6. Chuyện gì xảy ra nếu tôi quên câu trả lời?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-6-ans">Easykeytopass không lưu bất kỳ thông tin nào của người dùng. Mật khẩu an toàn là một mật khẩu mà không người nào có thể biết được, kể cả người tạo ra nó. Là mật khẩu khó có thể phá bằng cách vét cạn (dò từng tổ hợp). Và là một mật khẩu không được bảo vệ bởi một mật khẩu khác. Đó là tiêu chí của Easykeytopass. Nếu quên hết từ khóa, thì câu trả lời như câu 5.</div>
+                <div class="w3-left-align w3-border-bottom" style="width:100%;background-color: #101010;color:#FFFFFF;cursor: pointer;padding: 6px 16px" onclick="$(this).next().toggle(300)" langkey="faq-7">7. Trang web có thu thập  mật khẩu của tôi cũng như thông tin cá nhân qua các câu hỏi không?</div>
+                <div class="w3-left-align" style="display:none;margin: 5px" langkey="faq-7-ans">Như những tiêu chí đã nêu ra ở câu 6, Easykeytopass không hề lưu bất cứ thông tin nào từ người dùng. Chúng tôi chỉ biết có bao nhiêu Khối được tạo ra, nội dung gợi ý của Từng Khối. Bằng chứng là người dùng không phải đăng nhập để sử dụng Easykeytopass.</div> 
                 <br/>         
             </div>    
         </div>

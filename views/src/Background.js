@@ -3,7 +3,7 @@ var mainHTML = document.getElementsByTagName("html")[0]
 
 function CreateCollunm(XLeft)
 {
-    var InitialText = '<div style="color:#80EE80; opacity:0.45;text-shadow:1px 1px 8px #30EE30,-1px -1px 8px #30EE30;font-family: \'Courier\';z-index:__ZINDEX__;font-size:__SIZE__px;line-height: 100%;top:60px;left:__LEFT__px;position:fixed">__TEXT__</div>';
+    var InitialText = '<div style="color:#80EE80; opacity:0.45;text-shadow:1px 1px 8px #30EE30,-1px -1px 8px #30EE30;font-family: \'Courier\';z-index:__ZINDEX__;font-size:__SIZE__px;line-height: 100%;left:__LEFT__px;position:fixed">__TEXT__</div>';
     var IncludeText = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM010101';
     var InsideText="";
     var Xsize = Math.floor(Math.random()*25) + 5;   
@@ -54,8 +54,15 @@ function showContent(element)
     
 }
 
-// $( window ).resize(function() {
-    
+$( window ).resize(function() {
+    if($("#menu-right").css("display") === "none")
+    {
+        $("#menu-right").css("display", "inline")
+        // $("#menu-right").css("left", "-50px")
+        $("#menu-right").css("background", "black")
+        $("#menu-right").css("opacity", "1")
+    }
+})  
 //     $("#BackGround").empty()
 //     var i = 0 ;
 //     var Xleft = -1;
@@ -197,7 +204,7 @@ $(document).ready(function(){
     var i = 0 ;
     var Xleft = -1;
     var MaxWidth = 4000
-    
+    $("#QuickTour").show()
     if (navigator.userAgent.indexOf("Edge") >= 0 || navigator.userAgent.length === NaN )
     {
         $(".btnShowHidePassword").css("display", "none")
@@ -222,7 +229,9 @@ $(document).ready(function(){
         // i++
     }
     //SettingOpen()
-    
+//     $(document).on("swiperight",function(){
+//     alert("You swiped right!");
+//   });
     
    $.get('blockchain/getAllBlockNames', function(data, status) {
        
@@ -463,7 +472,7 @@ function generatePassword() {
     $("input[name='keyword']").each(function() {
         keyword.push($(this).val());
     })
-    $.post('passgen', {
+    $.post('https://www.easykeytopass.com/passgen', {
         blockname: blockname,
         keyword: keyword
     }, function(data, status) {
@@ -623,22 +632,23 @@ function KeywordKeyup(event)
 
 function Popup(element)
 {
-    $(element).animate({top:"-10px"}, "fast")
+    
     var social = $(element).attr("social");
     $("#" + social).show("fast");
+     $(element).css("color", "#D1EF30");
+    if(social == null) return;
     if (social.indexOf("facebook") >= 0)
     {
         $(element).css("color", "#3B5998");
     }
-    if (social.indexOf("twiter") >= 0)
+    else if (social.indexOf("twiter") >= 0)
     {
         $(element).css("color", "#55ACEE");
     }
-    if (social.indexOf("google") >= 0)
+    else if (social.indexOf("google") >= 0)
     {
         $(element).css("color", "#DD4B39");
     }
-
 }
 function Popdown(element)
 {
@@ -647,6 +657,145 @@ function Popdown(element)
     $("#" + social).hide("fast");
      $(element).css("color", "#FFFFFF");
 }
-// $( window ).scroll(function() {
-  
-// });
+
+function SimpleTour()
+{
+    
+     //$("#BlockName").animate({backgroundColor:"#FF0000"}, 500)    
+    $("#BlockNameGuide").show()
+    BlinkingBlock();
+    
+}
+var BlinkingBlock = function()
+{ 
+    
+    setTimeout(function() {
+        $("#BlockName").css("background-color", "#A00000")
+        setTimeout(function() {
+            $("#BlockName").css("background-color", "#000000")
+            if ($("#BlockName").val().length > 0){
+                $("#BlockNameGuide").hide();
+                $("#KeyWordGuide").show();
+                BlinkingKeyWord();
+                
+            }
+            else{
+                BlinkingBlock()
+            }
+        }, 500);
+    }, 500);
+}
+var BlinkingKeyWord = function()
+{ 
+    setTimeout(function() {
+        $("input[name='keyword']").css("background-color", "#00A000")
+        setTimeout(function() {
+            $("input[name='keyword']").css("background-color", "transparent")
+            if ($("input[name='keyword']").val().length > 0){  
+                
+                $("input[name='keyword']").css("background-color", "transparent")  
+                $("#KeyWordGuide").hide();   
+                $("#GenBtnGuide").show();
+                BlinkingGenButton();
+            }
+            else{                
+                BlinkingKeyWord()
+            }
+        }, 500);
+    }, 500);
+}
+var BlinkingGenButton = function()
+{
+    setTimeout(function() {
+        $("div[langkey='GenPassword']").css("background-color", "#0000A0")
+        setTimeout(function() {
+            $("div[langkey='GenPassword']").css("background-color","transparent")
+            if ($("#encryptedPassword").val().length > 0){
+                $("div[langkey='GenPassword']").css("background-color", "transparent");         
+                $("#GenBtnGuide").hide(); 
+                $("#CopyBtnGuide").show();      
+                BlinkingCopyButton(0)
+            }
+            else{
+                BlinkingGenButton()
+            }
+        }, 500);
+    }, 500);
+}
+
+function BlinkingCopyButton ( iteraction)
+{
+    
+    setTimeout(function() {
+        $("#ContentCopy").css("background-color", "#FFFFFF")
+        setTimeout(function() {
+            $("#ContentCopy").css("background-color", "transparent")
+            if (iteraction > 5){
+                
+                $("#ContentCopy").css("background-color", "transparent");                   
+                $(".popuptext").show()
+                $(".bottompopuptext").show()
+                return 1;
+            }
+            else{
+                console.log(iteraction)
+                BlinkingCopyButton(++iteraction)
+            }
+        }, 500);
+    }, 500);
+}
+
+$(window).scroll(function(){
+    if($(window).scrollTop() > 0)
+    {
+        $("#menu").slideDown(300);
+    }
+    else
+    {
+         $("#menu").slideUp(300);
+    }
+} )
+
+// $(document).swiperight(function(){
+//     alert("You swiped right!");
+// }); 
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;                                                        
+var yDown = null;                                                        
+
+function handleTouchStart(evt) {                                         
+    xDown = evt.touches[0].clientX;                                      
+    yDown = evt.touches[0].clientY;                                      
+};                                                
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) && window.innerWidth < 640 ) {/*most significant*/
+        if ( xDiff > 0 ) {
+           $("#menu-right").css("display", "none") 
+           $("#menu-right").css("background", "transparent")
+        } else {
+            $("#menu-right").css("display", "inline")
+            // $("#menu-right").css("left", "-50px")
+            $("#menu-right").css("background", "black")
+            $("#menu-right").css("opacity", "0.8")
+            $("#menu-right").animate("{left:'50px'}", "300")
+        }                       
+    }                                                                  
+   
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+

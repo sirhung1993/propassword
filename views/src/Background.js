@@ -537,13 +537,14 @@ function SubmitBlockName()
     $("input[name='hint']").each(function() {
         hint.push($(this).val())
     })
-    $("#modal").show()
+    
     $.post('blockchain', {
         blockname: blockname,
         hint: hint
     }, function (data, status) {
 
         if(data.OK) {
+            $("#modal").show()
             $("#waiting").hide("fast", function (){
                 $("#AddNewlogInfo").slideDown( function(){
                     setTimeout(function() {
@@ -610,6 +611,10 @@ function SelectLanguage()
         else if(key.indexOf("holder-") === 0)
         {
             $("[langkey='" + key+ "']").attr("placeholder",LangHash[key]);
+        }  
+        else if(key.indexOf("img-") === 0)
+        {
+            $("[langkey='" + key+ "']").attr("src",LangHash[key]);
         }   
         else if(key.indexOf("html-") === 0)
         {

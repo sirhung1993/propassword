@@ -59,8 +59,8 @@ $( window ).resize(function() {
     {
         $("#menu-right").css("display", "inline")
         // $("#menu-right").css("left", "-50px")
-        $("#menu-right").css("background", "black")
-        $("#menu-right").css("opacity", "1")
+        // $("#menu-right").css("background", "black")
+        // $("#menu-right").css("opacity", "1")
     }
 })  
 //     $("#BackGround").empty()
@@ -754,6 +754,16 @@ $(window).scroll(function(){
     if($(window).scrollTop() > 0)
     {
         $("#menu").slideDown(300);
+        if (window.innerWidth < 640)
+        {
+            $("#menu-right").css("background-color", "black")
+           
+        }
+        else
+        {
+            $("#menu-right").css("background-color", "transparent")
+           
+        }
     }
     else
     {

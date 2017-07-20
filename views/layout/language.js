@@ -99,8 +99,8 @@ var language = {
         'faq-6-ans': 'Easykeytopass does not store any user information. Our slogan is: Safe password is the password that no one knows about it - even the creators. Safe password is very difficult to be hack by bruteforce. The last but not least, it is not covered by another password. Easykeytopass always follow this. Thus, you could read the 5-th answer to find the solution for this case.',
 
         'faq-7' : '7. Does Easykeytopass store my information?',
-        'faq-7-ans': 'As 6-th answer statement, Easykeytopass does not store any user information. The only thing we known is the created Block and the included hints. As you see, Easykeytopass does not require login or user authentication to use it.'
-
+        'faq-7-ans': 'As 6-th answer statement, Easykeytopass does not store any user information. The only thing we known is the created Block and the included hints. As you see, Easykeytopass does not require login or user authentication to use it.',
+        "Guide":"Getting Started"
     },
     "vi":{
         "Home":"Trang chủ",
@@ -202,6 +202,7 @@ var language = {
         'faq-6-ans': 'Easykeytopass không lưu bất kỳ thông tin nào của người dùng. Mật khẩu an toàn là một mật khẩu mà không người nào có thể biết được, kể cả người tạo ra nó. Là mật khẩu khó có thể phá bằng cách vét cạn (dò từng tổ hợp). Và là một mật khẩu không được bảo vệ bởi một mật khẩu khác. Đó là tiêu chí của Easykeytopass. Nếu quên hết từ khóa, thì câu trả lời như câu 5.',
 
         'faq-7' : '7. Trang web có thu thập  mật khẩu của tôi cũng như thông tin cá nhân qua các câu hỏi không?',
-        'faq-7-ans': 'Như những tiêu chí đã nêu ra ở câu 6, Easykeytopass không hề lưu bất cứ thông tin nào từ người dùng. Chúng tôi chỉ biết có bao nhiêu Khối được tạo ra, nội dung gợi ý của Từng Khối. Bằng chứng là người dùng không phải đăng nhập để sử dụng Easykeytopass.'
+        'faq-7-ans': 'Như những tiêu chí đã nêu ra ở câu 6, Easykeytopass không hề lưu bất cứ thông tin nào từ người dùng. Chúng tôi chỉ biết có bao nhiêu Khối được tạo ra, nội dung gợi ý của Từng Khối. Bằng chứng là người dùng không phải đăng nhập để sử dụng Easykeytopass.',
+        "Guide":"Bắt đầu sử dụng"
     }
 }

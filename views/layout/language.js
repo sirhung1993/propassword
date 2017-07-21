@@ -100,7 +100,12 @@ var language = {
 
         'faq-7' : '7. Does Easykeytopass store my information?',
         'faq-7-ans': 'As 6-th answer statement, Easykeytopass does not store any user information. The only thing we known is the created Block and the included hints. As you see, Easykeytopass does not require login or user authentication to use it.',
-        "Guide":"Getting Started"
+        "Guide":"Getting Started",
+        'img-getting-started-1': 'views/images/getting_started_1_en.png',
+        'img-getting-started-2': 'views/images/getting_started_2_en.png',
+        'img-getting-started-3': 'views/images/getting_started_3_en.png'
+
+        //End of english
     },
     "vi":{
         "Home":"Trang chủ",
@@ -203,6 +208,9 @@ var language = {
 
         'faq-7' : '7. Trang web có thu thập  mật khẩu của tôi cũng như thông tin cá nhân qua các câu hỏi không?',
         'faq-7-ans': 'Như những tiêu chí đã nêu ra ở câu 6, Easykeytopass không hề lưu bất cứ thông tin nào từ người dùng. Chúng tôi chỉ biết có bao nhiêu Khối được tạo ra, nội dung gợi ý của Từng Khối. Bằng chứng là người dùng không phải đăng nhập để sử dụng Easykeytopass.',
-        "Guide":"Bắt đầu sử dụng"
+        "Guide":"Bắt đầu sử dụng",
+        'img-getting-started-1': 'views/images/getting_started_1_vn.png',
+        'img-getting-started-2': 'views/images/getting_started_2_vn.png',
+        'img-getting-started-3': 'views/images/getting_started_3_vn.png'
     }
 }

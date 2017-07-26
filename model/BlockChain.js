@@ -7,13 +7,17 @@ const router = express.Router()
 router.post('/', (req, res, next) => {
   var blockname = req.body.blockname
   var hintsBlock = req.body['hint[]']
-
-  redis.createNewBlock(blockname, hintsBlock)
+  if(blockname !== 'defaultblock') {
+      redis.createNewBlock(blockname, hintsBlock)
     .then((reply) => {
       res.status(200).json({OK: {msg: 'Create new block susscessfully! ' + reply}})
     }).catch((err) => {
       res.status(200).json({err: {msg: 'Cannot create new block due to:  ' + err}})
     })
+  } else {
+    res.status(200).json({err: {msg: 'This "defaultblock" cannot be used'}})
+  }
+
 })
 
 router.get('/getAllBlockNames', (req, res, next) => {

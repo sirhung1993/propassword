@@ -237,7 +237,7 @@ $(document).ready(function(){
        
         if(data.OK) {
             var allBlockNames = data.OK.msg
-            console.log(allBlockNames)
+            // console.log(allBlockNames)
             var blockFilter = document.getElementById('BlockFilter')
             var firstBlockName = blockFilter.firstElementChild
             for (var i in allBlockNames) {
@@ -557,7 +557,13 @@ function SubmitBlockName()
                 })
             })
         } else {
-        console.log(data.err.msg)
+            var err = data.err.msg
+              $("#submit-newblock-warning").text(err)
+              $("#submit-newblock-warning").show(
+                  setTimeout(function() {
+                    $("#submit-newblock-warning").hide()
+                  }, 10000))            
+            console.log(err)
     }
        // $("#modal").hide()
     })  
